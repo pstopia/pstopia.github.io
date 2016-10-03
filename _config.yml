@@ -3,9 +3,7 @@ markdown:         kramdown
 highlighter:      rouge
 
 # Setup
-title:            Hyde
-tagline:          'A Jekyll theme'
-baseurl:          /ps-contest-editorials
-
-author:
-  name:           'Mark Otto'
+title:            PS with ntopia
+service_host:     https://ntopia.github.io
+baseurl:          /ps-with-ntopia
+repository:       ntopia/ps-with-ntopia
