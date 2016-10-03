@@ -6,9 +6,11 @@
 
   <title>
     {% if page.title == "Home" %}
-      {{ site.title }} &middot; {{ site.tagline }}
+      {{ site.title }}
+    {% elsif page.group == "main" %}
+	  {{ page.title }} &middot; {{ site.title }}
     {% else %}
-      {{ page.title }} &middot; {{ site.title }}
+      {{ page.title }} &middot; {{ site.data.contests[page.group].contest_name }} &middot; {{ site.title }}
     {% endif %}
   </title>
 

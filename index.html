@@ -1,8 +1,14 @@
 ---
 layout: default
 title: Home
+group: main
+group_head: true
 ---
 
-<div class="page">
-  <h1 class="page-title">{{ page.title }}</h1>
-</div>
+<h1>Editorials for Problem Solving Contest</h1>
+
+<ul>
+{% for contest in site.data.contests %}
+  <li><a href="{{ site.baseurl }}/{{ contest[0] }}/">{{ contest[1].contest_name }}</a></li>
+{% endfor %}
+</ul>

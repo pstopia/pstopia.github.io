@@ -33,6 +33,7 @@
 
 html {
   font-family: 'Noto Sans KR', Arial, sans-serif;
+  overflow-y: scroll;
 }
 @media (min-width: 48em) {
   html {
