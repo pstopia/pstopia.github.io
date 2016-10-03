@@ -1,0 +1,12 @@
+# Dependencies
+markdown:         kramdown
+highlighter:      pygments
+
+# Setup
+title:            Hyde
+tagline:          'A Jekyll theme'
+url:              http://hyde.getpoole.com
+baseurl:          /
+
+author:
+  name:           'Mark Otto'
