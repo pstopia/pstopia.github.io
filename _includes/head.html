@@ -1,23 +1,14 @@
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>
     {% if page.title == "Home" %}
-      {{ site.title }}
-    {% elsif page.group == "main" %}
-	  {{ page.title }} &middot; {{ site.title }}
+      {{ site.title }} &middot; {{ site.tagline }}
     {% else %}
-      {{ page.title }} &middot; {{ site.data.contests[page.group].contest_name }} &middot; {{ site.title }}
+      {{ page.title }} &middot; {{ site.title }}
     {% endif %}
   </title>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="{{ site.baseurl }}/public/css/poole.css">
-  <link rel="stylesheet" href="{{ site.baseurl }}/public/css/syntax.css">
-  <link rel="stylesheet" href="{{ site.baseurl }}/public/css/hyde.css">
-  <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/notosanskr.css">
-
+  <link rel="stylesheet" href="{{ site.baseurl }}/styles.css">
 </head>
