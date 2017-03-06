@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Topcoder
+comments: false
 ---
 
 |Round           |     |     |     |
