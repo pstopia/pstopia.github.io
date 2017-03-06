@@ -4,7 +4,7 @@ permalink:           pretty
 # Setup
 title:               pstopia
 tagline:             Notes for Problem Solving Contest
-baseurl:             https://ntopia.github.io/pstopia/
+baseurl:             /pstopia
 
 # Assets
 #
@@ -15,5 +15,4 @@ sass:
 
 # Gems
 gems:
-  - jekyll-paginate
   - jekyll-gist
