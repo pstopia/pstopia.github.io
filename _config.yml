@@ -3,6 +3,7 @@ permalink:           pretty
 
 # Setup
 title:               pstopia
+description:         Notes for Problem Solving Contest
 tagline:             Notes for Problem Solving Contest
 baseurl:             /pstopia
 
@@ -23,3 +24,4 @@ sass:
 # Gems
 gems:
   - jekyll-gist
+  - jekyll-seo-tag
