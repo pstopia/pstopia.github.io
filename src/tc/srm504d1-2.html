@@ -1,0 +1,16 @@
+---
+layout: solution
+round_name: Topcoder SRM 504 Div1
+prob_name: '[Medium] AlgridTwo'
+title: '[Medium] AlgridTwo - Topcoder SRM 504 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11355'
+gist: 5771356dee84062bcd0eacd95d710ba9
+tags: [greedy]
+---
+일단 자명하게 output[0] == input[0] 이다.
+프로세스를 잘 관찰해보면
+output[i] 의 데이터를 갖고  input[i+1] 에 무언가를 덮어씌워  output[i+1] 이 만들어지는 형태이다.
+그래서 i번 행의 프로세스가 종료되면
+input[i+1] 에 있었던 문자들이 적당히 남아있을 것이고, 나머지는 전부 새로 덮어씌워진 B나 W일 것이다.
+덮어씌워진 자리에는 input으로 아무거나 와도 되므로, 결국 이렇게 덮어씌워지는 자리의 수를 구하면 된다.
+이 과정을 위에서부터 죽 시뮬레이션 하면 된다. 중간에 모순이 되는 경우 체크를 잊지 말자.
