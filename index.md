@@ -10,5 +10,6 @@ title: Home
   * [ICPC]({{ site.baseurl }}/src/icpc/)
 
 # Algorithm notes
-  * fslkdajfhlksfhslk
+  * Data Structure
+    * [Fenwick Tree]({{ site.baseurl }}/notes/data-structure/fenwick-tree/)
 

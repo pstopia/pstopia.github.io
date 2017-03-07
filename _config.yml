@@ -15,6 +15,11 @@ defaults:
       path: "src"
     values:
       comments: true
+  -
+    scope:
+      path: "notes"
+    values:
+      comments: true
 
 # Assets
 #
