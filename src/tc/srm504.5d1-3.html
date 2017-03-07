@@ -1,0 +1,19 @@
+---
+layout: solution
+round_name: Topcoder SRM 504.5 Div1
+prob_name: '[Hard] TheTicketsDivOne'
+title: '[Hard] TheTicketsDivOne - Topcoder SRM 504.5 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11098'
+gist: 4b43e6459adb9bbb29d639ab5b7da3fe
+tags: [probability, dp]
+---
+n명이 줄을 서 있을 때 그 중 맨 앞의 사람이 선택될 확률을 f(n) 이라 하자.
+f(1) = 1
+f(n) = 1/6 + 1/2 * sum( p(n-1, a) * f(n-a)  ,  0 <= a < n )
+p(i, j) = i명이 줄을 서있고 그 중 j명은 out되고 나머지는 맨뒤로 갈 확률
+        = iCj * (1/3)^j * (1/2)^(i-j)
+이렇게 식을 세울 수 있다.
+이게 무한번 반복되는 프로세스라서 이런 식으로 점화식을 쓸 수 있다던데 나도 어디서 듣기만 하고 자세한건 모른다.
+이론적인 내용은 마르코프 체인 을 배우면 된다던데 잘 모름ㅠ
+
+답은 sum( p(m-1, a) * f(n-a)  ,  0 <= a < m )
