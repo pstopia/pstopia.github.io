@@ -1,15 +1,11 @@
 ---
-layout: page
-title: SRM 501 Div1 Level2 - FoxAverageSequence
+layout: solution
+round_name: Topcoder SRM 501 Div1
+prob_name: '[Medium] FoxAverageSequence'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11340'
+gist: 148877cc918853771c7cf8ad835b3494
 tags: [dp]
 ---
-
-[Problem](https://community.topcoder.com/stat?c=problem_statement&pm=11340)
-
-<div class="psnote">
 DP
 D[i][S][a][0,1] = 1번째부터 i번째까지 수를 정했고, 그 수들의 합이 S, i번째 수가 a 일 때, 조건을 만족하는 경우의 수
 맨 끝이 0일 땐 (i-1번째 수) <= a,  맨 끝이 1일 땐 (i-1번째 수) > a   로 경우를 나눈다.
-</div>
-
-{% gist 148877cc918853771c7cf8ad835b3494 %}

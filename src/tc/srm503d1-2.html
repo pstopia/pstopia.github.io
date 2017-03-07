@@ -1,12 +1,11 @@
 ---
-layout: page
-title: SRM 503 Div1 Level2 - KingdomXCitiesandVillages
+layout: solution
+round_name: Topcoder SRM 503 Div1
+prob_name: '[Medium] KingdomXCitiesandVillages'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11063'
+gist: 5cb606770d6580670502febc7856d448
 tags: [probability, dp]
 ---
-
-[Problem](https://community.topcoder.com/stat?c=problem_statement&pm=11063)
-
-<div class="psnote">
 expectation 의 선형성을 이용해 문제를 단순화시킬 수 있다
 E( sum( 마을 i를 골랐을 때 선택된 도로의 길이 ), for all i )
 = sum( E( 마을 i를 골랐을 때 선택된 도로의 길이 ) ), for all i
@@ -20,6 +19,3 @@ j번째에 위치한 village와 도로를 연결할 확률은 어떻게 될까?
 j번째에 위치한 city와 도로를 연결할 확률은 어떻게 될까?
 이렇게 되려면 0~j-1번째 village는 마을 i가 선택된 이후에 선택되어야 한다.
 마찬가지로 생각해보면 확률은  j! / (j+1)! = 1 / (j+1)  이다.
-</div>
-
-{% gist 5cb606770d6580670502febc7856d448 %}

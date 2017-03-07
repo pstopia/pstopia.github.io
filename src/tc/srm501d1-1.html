@@ -1,18 +1,14 @@
 ---
-layout: page
-title: SRM 501 Div1 Level1 - FoxPlayingGame
+layout: solution
+round_name: Topcoder SRM 501 Div1
+prob_name: '[Easy] FoxPlayingGame'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11284'
+gist: a07e1aa86014d9660288164d701bdba9
 tags: [greedy, dp]
 ---
-
-[Problem](https://community.topcoder.com/stat?c=problem_statement&pm=11284)
-
-<div class="psnote">
 50x50 DP를 생각할 수 있다. 이건 간단하니 pass. 더 간단한 규칙으로 해결할 수 있다.
 scoreB 는 나중에 몰아서 다 곱하거나 아예 안곱하는게 낫다.
 그래서 P = scoreA * nA  라고 하면
 답은 max(  P,  P * scoreB,  P * pow(scoreB, nB-1),  P * pow(scoreB, nB)  )   다.
 앞의 두개는 |scoreB| 가 1보다 작은 경우, 뒤의 두개는 |scoreB| 가 1보다 큰 경우에 대한 답의 후보다.
 scoreB의 부호에 따라 답이 바뀔 수 있으므로 저렇게 4가지 경우를 체크하는 것이다.
-</div>
-
-{% gist a07e1aa86014d9660288164d701bdba9 %}

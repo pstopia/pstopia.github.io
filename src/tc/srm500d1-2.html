@@ -1,17 +1,13 @@
 ---
-layout: page
-title: SRM 500 Div1 Level2 - FractalPicture
+layout: solution
+round_name: Topcoder SRM 500 Div1
+prob_name: '[Medium] FractalPicture'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11344'
+gist: 9ae97473d1b2f2354db9f49a46656695
 tags: [geometry, divide and conquer]
 ---
-
-[Problem](https://community.topcoder.com/stat?c=problem_statement&pm=11344)
-
-<div class="psnote">
 재귀적으로 해결할 수 있다.
 우선, 입력으로 들어온 rect와 현재 보고 있는 final segment 사이에 겹치는 길이를 답에 더한다.
 그리고 3방향 non-final segment 로 다시 재귀적으로 들어가면 된다.
 진행 중에 입력으로 들어온 rect가 내 전체 영역을 덮는 경우엔 그냥 500단계 까지의 길이합을 공식으로 계산해서 바로 리턴.
 재귀적으로 들어갈 때, root가 (0, 0), 반대점이 (0, 81) 로 오도록 좌표변환을 하면 훨씬 깔끔하게 해결할 수 있다.
-</div>
-
-{% gist 9ae97473d1b2f2354db9f49a46656695 %}

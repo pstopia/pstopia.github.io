@@ -1,12 +1,11 @@
 ---
-layout: page
-title: SRM 501 Div1 Level3 - FoxSearchingRuins
+layout: solution
+round_name: Topcoder SRM 501 Div1
+prob_name: '[Hard] FoxSearchingRuins'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11286'
+gist: 5155512f51a26a99c4bf579743d68719
 tags: [dp, rmq]
 ---
-
-[Problem](https://community.topcoder.com/stat?c=problem_statement&pm=11286)
-
-<div class="psnote">
 O(n*LR*n) DP 는 쉽게 생각할 수 있다.
 D[i][k] = i번 보석의 위치까지 좌우이동을 k번 했을 때 얻을 수 있는 최대 가치
 하지만 빼박 TLE 다. 이걸 seg tree || fw tree 를 이용해 O(n*LR*logW) 로 내릴 수 있다.
@@ -26,6 +25,3 @@ y번 행의 dp값을 구할 때 그 max tree 를 참조하면 된다는 아이�
 그래서 행을 처리할 때는 위의 관찰을 이용해
 왼쪽->오른쪽 으로 가면서 최대값을 구한 배열, 오른쪽->왼쪽 으로 가면서 최대값을 구한 배열 2개를 만들고
 마지막으로 두 배열 중 최대값을 max tree 를 갱신하는것과 답을 구하는것에 사용하면 된다.
-</div>
-
-{% gist 5155512f51a26a99c4bf579743d68719 %}

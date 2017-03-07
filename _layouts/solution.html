@@ -1,0 +1,15 @@
+---
+layout: default
+---
+
+<article class="page">
+  <h1 class="page-title">{{ page.prob_name }}</h1>
+  <h3 class="page-subtitle">{{ page.round_name }}</h3>
+
+  <p><a href="{{ page.prob_link }}" target="_blank">Problem</a>
+
+<div class="psnote">{{ content }}</div>
+
+{% gist page.gist %}
+
+</article>

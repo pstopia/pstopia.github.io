@@ -1,12 +1,11 @@
 ---
-layout: page
-title: SRM 500 Div1 Level3 - ProductAndSum
+layout: solution
+round_name: Topcoder SRM 500 Div1
+prob_name: '[Hard] ProductAndSum'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11345'
+gist: 7bc4bc1675a133ad1700ef5184af8428
 tags: [math, brute force]
 ---
-
-[Problem](https://community.topcoder.com/stat?c=problem_statement&pm=11345)
-
-<div class="psnote">
 조건을 만족하는 수 N의 digit 중 1의 개수를 d[1], 2의 개수를 d[2], ..., d[9] 라고 하자.
 (N의 digit에는 0이 있을 수 없으므로 d[0]은 의미없음)
 전탐색을 하는데 신묘한 방식으로 경우의 수를 쳐낼 것이다.
@@ -26,6 +25,3 @@ d[1] = S - (2 * d[2] + 3 * d[3] + 4 * d[4] + 5 * d[5] + 6 * d[6] + 7 * d[7] + 8 
 각 자리에  i가 등장하는 횟수는  K * (d[i] / L)  이므로
 ( sum(  i * d[i]  ) * K / L ) * m   만큼 답에 더해주면 된다. ( m은 L자리의 1로 이루어진 수 )
 이를 O(1) 에 처리하기 위해서 팩토리얼, 역수 등을 전처리로 미리 구해놓자
-</div>
-
-{% gist 7bc4bc1675a133ad1700ef5184af8428 %}

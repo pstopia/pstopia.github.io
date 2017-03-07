@@ -1,12 +1,11 @@
 ---
-layout: page
-title: SRM 503 Div1 Level1 - ToastXToast
+layout: solution
+round_name: Topcoder SRM 503 Div1
+prob_name: '[Easy] ToastXToast'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11204'
+gist: 73b8fdc7ad3cb0dd73c547e169bf0509
 tags: [greedy]
 ---
-
-[Problem](https://community.topcoder.com/stat?c=problem_statement&pm=11204)
-
-<div class="psnote">
 under와 over들을 다 모아놓고 수직선에 배열한 상황을 상상해보자.
 제일 왼쪽에 있는 over의 왼쪽에 under가 하나라도 없다면 -1
 마찬가지로 제일 오른쪽에 있는 under의 오른쪽에 over가 하나라도 없다면 -1
@@ -14,6 +13,3 @@ under와 over들을 다 모아놓고 수직선에 배열한 상황을 상상해�
 여기까지는 자명하고, 이제 그 외 경우의 답은 무조건 2다.
 제일 왼쪽의 under 하나를 고르고 나머지 over를 모두 모아 한 셋에 몰아넣고
 제일 오른쪽의 over 하나를 고르고 나머지 under를 모두 모아 한 셋에 몰아넣으면 되기 때문.
-</div>
-
-{% gist 73b8fdc7ad3cb0dd73c547e169bf0509 %}
