@@ -1,0 +1,37 @@
+---
+layout: solution
+round_name: Topcoder SRM 515 Div1
+prob_name: '[Medium] NewItemShop'
+title: '[Medium] NewItemShop - Topcoder SRM 515 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11508'
+gist: ad9dfeebc77692ce1195208bc0183eca
+tags: [dp]
+---
+다음과 같은 무난한 DP를 생각해볼 수 있다.
+D[time][swords][visit_set]
+= 현재 시각은 time, 현재 swords개의 검이 남아있음, 현재 방문한 사람의 집합이 visit_set 일 때
+  앞으로 판매를 진행했을 때 얻을 수 있는 수익의 최대 기대값
+
+시각 time에 방문하는 사람의 index 를 i라 하고
+이 사람이 시각 i에 처음 방문하게 되는 확률을 P(i, time) 이라 하자
+
+1) i에 해당하는 사람이 없는 경우  ||  i 가 visit_set 에 포함되는 경우
+D[time+1][swords][visit_set]
+
+2) i 가 visit_set 에 포함되지 않는 경우
+P(i, time) * max( D[time+1][swords-1][visit_set+{i}] + cost(i, time),
+                  D[time+1][swords][visit_set+{i}]   )
++
+(1 - P(i, time)) * D[time+1][swords][visit_set]
+
+답은 D[0][init_swords][0] 이다.
+
+자! 그런데 visit_set 이 최대 2^24 까지 갈 수 있어서 이 방법을 그대로 쓰기엔 무리가 있다.
+잘 생각해보면, event가 2개 이상 있는 애들만 visit_set 에서 관리해도 상관없다는 것을 알 수 있다!
+event가 1개인 애들은 어차피 다시 등장하지 않으니까.
+event가 2개 이상인 애들이 최대 몇명일지 생각해보면.. 최대 12명이다!
+따라서 2^24 를 2^12 로 아름답게 줄일 수 있다.
+
+P(i, time) 을 계산하는 방법
+이 값을 입력데이터에서 주어지는 값을 그대로 사용하면 틀린다.
+i가 0~time-1 까지 등장하지 않았을 때, i가 time에 등장할 확률을 '조건부 확률' 로 구해야 한다.

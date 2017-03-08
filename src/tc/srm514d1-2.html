@@ -1,0 +1,25 @@
+---
+layout: solution
+round_name: Topcoder SRM 514 Div1
+prob_name: '[Medium] MagicalGirlLevelTwoDivOne'
+title: '[Medium] MagicalGirlLevelTwoDivOne - Topcoder SRM 514 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11482'
+gist: d33adea3d32ac73db4ea33e50f804fe6
+tags: [dp]
+---
+(m = 8 일 때, 우리가 관심있는 합의 영역이 오른쪽으로 한 칸 이동한 상황이다)
+________            ________
+x.......y    ->    x.......y
+왼쪽 그림에서의 합을 S 라고 하면 오른쪽 그림에서의 합은 S - x + y 가 된다
+S % 2 == 1 이어야 하고  S - x + y % 2 == 1 이어야 한다
+따라서 x % 2 == y % 2  이어야 함을 알 수 있다.
+세로방향에 대해서도 같은 논리를 적용할 수 있다.
+따라서 모든 (i,j) 에 대해 palette[i][j] % 2 == palette[i % n][j % m] % 2  가 성립한다.
+
+이제 0 <= i < n && 0 <= j < m  인 (i,j) 에 대해서만 palette[i][j] 의 홀짝을 결정해주면
+모든 칸의 홀짝이 알아서 결정되고 문제의 조건을 만족하게 된다.
+여기서부턴 dp로 쉽게 풀 수 있다.
+D[i][s] = 0번행~i번행 까지 홀짝을 결정했고, 그 때 각 열의 합의 홀짝 상태가 s임. 이 때 가능한 경우의 수.
+그냥 단순하게 O(m*n*2^(2m)) 으로 짜도 나오긴 함.
+전처리를 똑똑하게 하면 O(m*n*2^m + n*2^(2m)) 으로 줄일 수도 있음.
+답은 D[n - 1][2^n - 1]
