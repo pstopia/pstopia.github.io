@@ -1,0 +1,20 @@
+---
+layout: solution
+round_name: Topcoder SRM 509 Div1
+prob_name: '[Easy] LuckyRemainder'
+title: '[Easy] LuckyRemainder - Topcoder SRM 509 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11138'
+gist: d58d8dd90ba19f885ce7ad055c19b8e4
+tags: [math]
+---
+10^k % 9 = 1  인 성질을 파악하면 쉬워지는 문제다.
+p를 digit가 abcd 인 10진수라고 해보자
+p % 9
+= (a * 10^3 + b * 10^2 + c * 10^1 + d * 10^0) % 9
+= (  (a % 9) * (10^3 % 9) + (b % 9) * (10^2 % 9) + (c % 9) * (10^1 % 9) + (d % 9) * (10^0 % 9)  ) % 9
+= (  (a % 9) + (b % 9) + (c % 9) + (d % 9)  ) % 9
+= (a + b + c + d) % 9
+
+X의 길이를 n이라 하면
+X의 i번째 digit가 포함된 조합은 2^(n-1) 가지이므로
+super(X) = sum( X[i] * 2^(n-1) ) % 9

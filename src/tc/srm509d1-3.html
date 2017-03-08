@@ -1,0 +1,67 @@
+---
+layout: solution
+round_name: Topcoder SRM 509 Div1
+prob_name: '[Hard] NumberLabyrinthDiv1'
+title: '[Hard] NumberLabyrinthDiv1 - Topcoder SRM 509 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11430'
+gist: dc42373acb107ee66b6214a482abade6
+tags: [dp, combinatorics]
+---
+숫자가 써있는 칸과 목적지의 좌표값은 전부 1 이상이다. 즉, (0, y), (x, 0) 에는 전부 숫자가 써있지 않다.
+따라서 K가 2 이상이면
+(0, 0) 에 xFinish를 씀 -> (xFinish, 0) 에 yFinish를 씀 -> (xFinish, yFinish)
+혹은 (0, 0) 에 yFinish를 씀 -> (0, yFinish) 에 xFinish를 씀 -> (xFinish, yFinish)
+로 이동해서 최단거리 xFinish + yFinish - 1 만에 이동할 수 있고
+K가 1 이하이면 목적지에 도달하는 것이 불가능하다.
+우리는 최단거리로 이동하는 경로의 가짓수를 알고 싶은데, 최단거리가 xFinish + yFinish - 1 이므로
+무조건 오른쪽, 아래 방향으로만 움직여야 한다는 사실을 알 수 있다.
+
+다음과 같은 점들을 '중요한 점' 이라고 하자.
+1) (0, 0)
+2) (xFinish, yFinish)
+3) (X[i], Y[i])   (숫자가 써있는 점)
+4) (X[i] + val[i], Y[i])
+5) (X[i], Y[i] + val[i])
+'중요한 점'들을 모아 x, y 순으로 정렬해놓자. (0번 중요한점 은 출발지, N-1번 중요한점 은 도착지가 됨)
+
+여러단계의 DP로 문제를 해결할 수 있다.
+
+freemoveWays[i][j][k] = i번 중요한 점 에서 j번 중요한 점 까지 숫자를 k번 써서 갈 수 있는 경우의 수
+                        격자 상에 숫자가 써있는 칸이 하나도 없다고 가정함
+dx == 0 && dy > 0
+  -> comb[dy-1][k-1]
+dy == 0 && dx > 0
+  -> comb[dx-1][k-1]
+dx > 0 && dy > 0
+  -> sum( comb[k][h] * comb[dx-1][h-1] * comb[dy-1][k-h-1]  , 0 <= h <= k )
+
+emptyWaysEmptyStart[i][j][k] = i번 중요한 점 에서 j번 중요한 점 까지
+                               숫자가 써있던 칸을 밟지 않으면서 숫자를 k번 써서 갈 수 있는 경우의 수
+                               그런데 i번에는 숫자가 써있지 않음
+  = freemoveWays[i][j][k] - sum( freemoveWays[i][mid][p] * emptyWaysEmptyStart[mid][j][k-p] )
+         ( i < mid < j , 0 <= p <= k , mid번 칸에는 숫자가 써있어야 함 )
+격자 상에 숫자가 써있는 칸이 하나도 없을 때 i->j로 이동하는 경우의 수 에서
+실제로 숫자가 써있는 칸을 하나 이상 밟은 경우의 수를 빼준 것이다.
+그렇다면 숫자가 써있는 칸을 하나 이상 밟은 경우의 수는 어떻게 구할까?
+mid번은 경로 상에서 마지막으로 밟은 숫자가 써있는 칸이다. 그곳까지는 자유롭게 진행하고
+mid->j 로 갈 때 숫자가 써있던 칸을 밟지 않는 경로를 세어주는 것이다.
+
+emptyWays[i][j][k] = i번 중요한 점 에서 j번 중요한 점 까지
+                     숫자가 써있던 칸을 밟지 않으면서 숫자를 k번 써서 갈 수 있는 경우의 수
+i번 중요한점에 숫자가 써있지 않은 경우
+  -> emptyWaysEmptyStart[i][j][k]
+i번 중요한점에 숫자가 써있는 경우
+  -> (x[i] + val[i], y[i])  혹은  (x[i], y[i] + val[i])  로 뛰게 될텐데 그곳의 번호를 p라 하면
+     p == j 라면 도착한 것이므로 k == 0 이어야 말이 된다. 이때는 +1
+     p에 숫자가 써있지 않다면 그곳으로 점프할 수 있다. 이때는 +emptyWaysEmptyStart[p][j][k]
+     p에 숫자가 써있다면 조건에 맞지 않음
+
+D[i][k] = (0, 0) 에서 i번 중요한 점 까지 숫자를 k번 써서 갈 수 있는 경우의 수
+        = sum(  D[j][k-p] * emptyWays[i][j][p]  , 0 <= j < i , 0 <= p <= k , j번 칸에는 숫자가 써있어야 함 || j == 0  )
+D[0][0] = 1
+D[0][k] = 0
+j번은 경로 상에서 마지막으로 밟은 숫자가 써있는 칸이다. 그곳까지는 일반적으로 진행하고
+j->i 로 갈 때 숫자가 써있던 칸을 밟지 않는 경로를 세어주는 것이다.
+이렇게 세면 중복이 없다.
+
+답은 sum( D[N-1][k] , 2 <= k <= K )

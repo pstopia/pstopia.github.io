@@ -1,0 +1,44 @@
+---
+layout: solution
+round_name: Topcoder SRM 510 Div1
+prob_name: '[Medium] TheLuckyGameDivOne'
+title: '[Medium] TheLuckyGameDivOne - Topcoder SRM 510 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11463'
+gist: 3ae44857bf377610cb406b77a31738ca
+tags: [math, brute force]
+---
+먼저, 10^10 이하인 lucky number 는 2046개 밖에 되지 않는다는 사실을 짚고 넘어가자.
+
+John, Brus 가 구간을 선택하는 경우를 전부 다 확인할 필요가 없다.
+lucky number가 듬성듬성 존재하기 때문에, 많은 경우들을 같게 칠 수 있다.
+구간이 왼쪽 끝에 lucky number를 막 포함하는 경우, 포함하기 직전인 경우
+오른쪽 끝에 lucky number를 막 포함하는 경우, 포함하기 직전인 경우 등등..
+몇가지 가능성 있는 지점들을 뽑아 그곳만 탐색하는 전략을 사용할 수 있을 것만 같다. 이걸 엄밀하게 생각해보자.
+
+John 이 먼저 구간 [p, q] 를 고르고 난 상황을 가정하자. 이제 Brus 가 구간을 골라야 한다.
+Brus 가 고르는 구간의 시작점을 x라 하면, 그 구간 [x, x + bLen - 1] 에 포함된 lucky number의 개수를 F(x) 라 하자.
+Brus 의 목표는  p <= x <= q - bLen + 1 에서 최소의 F(x) 를 찾는 것이다.
+만약 x, x+1 둘 다 lucky number 가 아니라고 하자. 그렇다면 자명하게 F(x) <= F(x+1) 이다.
+만약 x가 lucky number이고 x+1이 lucky number가 아니라고 하자. 이건 자명하게 F(x) >= F(x+1) 이다.
+x, x+1 둘 다 lucky number 인 상황은 없다.
+따라서 minimum 을 찾고 싶으면 어떤 lucky number L 이 있을 때, F(L+1) 을 살펴보면 된다는 사실을 알 수 있다.
+여기에 더해, F(p) 도 같이 살펴봐야 한다.
+살펴봐야 하는 지점은 최대 2046개이므로 전부 다 살펴볼 수 있다.
+
+이제 John 이 구간을 어떻게 골라야 할지 생각해보자.
+John 이 고르는 구간의 시작점을 x라 하면, 그 때 Brus 가 고르는 최적의 답안을 B(x) = min( F(x), F(x+1), ..., F(x+jLen-bLen) )  라 하자.
+John 의 목표는  a <= x <= b - jLen + 1  에서 최대의 B(x) 를 찾는 것이다.
+
+B(x) -> B(x-1)  을 풀어 써보면
+min( F(x), F(x), ..., F(x+jLen-bLen) ) -> min( F(x-1), F(x), ..., F(x+jLen-bLen-1) )
+B(x) 의 값이 F(x+jLen-bLen) 였다고 해보자. 그러면 B(x) 에서 B(x-1)로 변하면 값이 커질 가능성이 있다.
+하지만 새로 추가되는 F(x-1) 때문에 항상 그런건 아니다. 언제 확실히 커지냐?  F(x-1) >= F(x) 일 때다.
+따라서 F(x-1) >= F(x) 이면 B(x-1) >= B(x) 이다.
+우리는 B(x)의 최대를 찾고 싶다. 따라서 F(x-1) >= F(x) 인 x는 무시해도 된다. 즉, F(x-1) < F(x) 인 x만 체크해도 된다.
+이런 x는 어떤 것들인가? F(x) 에서 F(x-1) 로 변하는 과정을 잘 살펴보면 알 수 있다.
+(x, x+1, ..., x+bLen-1)  ->  (x-1, x, ..., x+bLen-2)
+x+bLen-1 이 lucky number 라면  F(x) >= F(x-1) 이 될 것이고
+x+bLen-1 이 lucky number 가 아니라면  F(x) <= F(x-1) 이 될 것이다.
+따라서 우리는 x+bLen-1 이 lucky number 일 때의 x 만을 체크해도 된다.
+여기에 더해, x = a 일 때도 확인해봐야한다.
+체크해야 하는 지점은 마찬가지로 최대 2046개이다.

@@ -1,0 +1,18 @@
+---
+layout: solution
+round_name: Topcoder SRM 510 Div1
+prob_name: '[Easy] TheAlmostLuckyNumbersDivOne'
+title: '[Easy] TheAlmostLuckyNumbersDivOne - Topcoder SRM 510 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11461'
+gist: d72039bb5b7c9ca187ba19b63b007d9f
+tags: [brute force]
+---
+f(x) = 구간 [0, x] 중에서 almost lucky number 의 개수  라고 하면
+답은 f(b) - f(a - 1) 이다. 이런식으로 생각하는 유형이 은근 많다.
+
+10^16 이하의 수들 중에 almost lucky number 가 대략 어느정도 있을지 가늠해보자.
+먼저 4와 7만으로 이루어진 수는 2^16 + 2^15 + 2^14 + ... 개 정도 있다.
+nonlucky number가 1개 포함된 수는 2^15 * 8 * 15 + 2^14 * 8 * 14 + ... 개 정도 있다.
+다 합치면 대략 8백만개 이하다.
+따라서 함수f를 복잡하게 경우 따져가며 구현할 필요없이
+그냥 dfs를 돌리면 구현을 간단하게 할 수 있다.

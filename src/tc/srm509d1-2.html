@@ -1,0 +1,17 @@
+---
+layout: solution
+round_name: Topcoder SRM 509 Div1
+prob_name: '[Medium] PalindromizationDiv1'
+title: '[Medium] PalindromizationDiv1 - Topcoder SRM 509 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11443'
+gist: de65418a204c93c7aa2b710d45b1462d
+tags: [dp, graph]
+---
+DP
+d[i][j] = word[i] ~ word[j] 의 부분문자열을 palindrome 으로 만드는 최소 cost
+= min(
+    d[i + 1][j - 1] + matchcost(word[i], word[j])
+    d[i + 1][j] + matchcost(word[i], BLANK)
+    d[i][j - 1] + matchcost(word[j], BLANK)
+  )
+matchcost(a, b) = 글자 a와 글자 b를 같은 글자 c로 만드는 최소의 비용
