@@ -1,0 +1,16 @@
+---
+layout: solution
+round_name: Topcoder SRM 505 Div1
+prob_name: '[Medium] SetMultiples'
+title: '[Medium] SetMultiples - Topcoder SRM 505 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11395'
+gist: 4b46ada7c181717c4e7f6a462d039fd3
+tags: [math, greedy]
+---
+C <= D/2 라고 하자. 그러면 [C, D/2] 에 속한 수는 무조건 2배수가 [C, D] 에 속한다.
+마찬가지로 A <= B/2 이면, [A, B/2] 에 속한 수는 무조건 2배수가 [A, B] 에 속한다.
+따라서 A = max(A, B/2 + 1),  C = max(C, D/2 + 1)  로 갱신하여 이런 수들을 제거할 수 있다.
+이렇게 제거하고 나면, [A, B] 안에 속한 수의 k배수 (k > 1) 는 [A, B] 안에 없고, 무조건 [C, D] 에서 찾아야 한다.
+그래서 [A, B] 에서  k>1 인 자연수에 대해 [C/k, D/k] 를 모두 제거하고 나면 남은 수들이 답이 된다.
+모든 k를 다 볼 필요는 없고, 현재 상황에서 [A, B] 와 [C/k, D/k] 가 겹치게 되는 가장 작은 k를 찾고
+[C/k, D/k] 를 제거한 뒤 B를 갱신하는 식으로 하면 빠르게 동작한다.

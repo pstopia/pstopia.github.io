@@ -1,0 +1,48 @@
+---
+layout: solution
+round_name: Topcoder SRM 505 Div1
+prob_name: '[Hard] PerfectSequences2'
+title: '[Hard] PerfectSequences2 - Topcoder SRM 505 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11405'
+gist: 5d12747a0061fc2b7223991d2f166dcc
+tags: [math, brute force]
+---
+perfect sequence 의 형태가 몇가지 안된다는 것을 깨닫는 것이 point!
+(입력으로 들어온 수열을 A라고 함)
+
+1) perfect sequence 에 0이 포함된 경우
+
+곱이 무조건 0이므로 합도 0으로 만들어야 한다.
+A[i] 를 0으로 만들겠다고 정하자. S = sum(A[k]) 라 하면
+|A[i]| + |S - A[i]| 만큼의 비용이 든다.
+
+2) perfect sequence 의 모든 원소의 절대값이 1 이상인 경우
+
+perfect sequence 에서 1 혹은 -1 인 애들이 k개, 아닌 애들이 n-k개 있다고 하고
+n-k개의 합을 sum, 곱을 mul 이라고 하자. (전부 절대값이 2 이상인 수들이다)
+n-k개의 수들은 어떤 조건을 만족해야할지 생각해보면
+sum - k <= mul <= sum + k  혹은  sum - k <= -mul <= sum + k  를 만족해야
+어떻게든 전체가 perfect sequence가 될 가능성이 생긴다.
+정리하면  |sum - mul| <= k  or  |sum + mul| <= k
+즉,  |sum - mul| > k  and  |sum + mul| > k  인 경우를 걸러내면 된다.
+이런 조건 하에서 절대값이 2 이상인 수로 이루어진 수열은 얼마나 있을까?
+
+2-1) 길이가 2 이상인 경우
+이렇게 되는 경우의 수가 얼마나 될까?  *매우* 적다.
+dfs로 중복이 나오지 않게 하면서 모든 경우를 다 훑어볼 수 있다.
+길이는 많아봤자 5 이하이고 수의 절대값도 최대 9 정도 밖에 안된다...
+n <= 50  이라는 강력한 조건이 있기 때문이다.
+
+2-2) 길이가 1인 경우
+항상 |sum - mul| = 0 이므로 그냥 임의의수가 될 수 있어서 가짓수가 매우 많다고 생각할 수 있다.
+하지만 잘 생각해보면
+원래 입력으로 주어진 A 에 있던 수가 아니라면 그 수로 만드는 것이 비용이 더 싸진다.
+따라서 A에 존재하는 수만 대상으로 삼아도 된다.
+
+이런 모든 수열 P 에 대해, 나머지 자리를 1 혹은 -1로 채워서 perfect sequence가 되는 모든 경우를 다 돌면서
+A에서 P로 만드는 최소의 비용을 계산하면 된다.
+
+수열 X 에서 수열 Y로 만드는 최소 비용은
+두 수열을 오름차순으로 정렬한 뒤, |X[i]-Y[i]| 를 다 합한 값이다.
+증명은 여백이 좁아서 생략...
+물론 길이가 짧으므로 DP로 구할 수도 있다.

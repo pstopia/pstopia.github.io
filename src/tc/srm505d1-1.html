@@ -1,0 +1,16 @@
+---
+layout: solution
+round_name: Topcoder SRM 505 Div1
+prob_name: '[Easy] RectangleArea'
+title: '[Easy] RectangleArea - Topcoder SRM 505 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11400'
+gist: b5b02512aae112265e6d0c14e34f5fbb
+tags: [graph]
+---
+S(i,j) = xi * yj  라는 정보가 주어지면 이것을 xi = S(i,j) / yj  로 바꾸거나  yj = S(i,j) / xi  로 바꿔서 다른 식에 대입하면
+필요한 변수의 개수가 하나 줄어드는 효과가 있다.
+xi 와 yj 를 정점으로 만들고 이렇게 정보가 주어진 노드 사이에는 간선을 이은 그래프를 생각해볼 수 있다.
+여기서 연결 컴포넌트는 서로간의 변수 변환을 통해 변수의 값을 구하거나 하나의 변수로 나타낼 수 있는 집합을 나타낸다.
+그럼 전체 그래프 상에서 컴포넌트들을 모두 연결하면, 전체 넓이의 값을 구하거나 전체 넓이를 하나의 변수 나타낼 수 있게 된다.
+여기에 전체넓이 = sum(xi * yj) 식을 연립하면 전체넓이를 항상 구할 수 있다.
+따라서 컴포넌트들을 모두 연결하는 최소의 간선수가 답이 된다.
