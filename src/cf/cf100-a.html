@@ -1,0 +1,15 @@
+---
+layout: solution
+round_name: Codeforces Round #100
+prob_name: '[A] New Year Table'
+title: '[A] New Year Table - Codeforces Round #100'
+prob_link: 'http://codeforces.com/contest/140/problem/A'
+gist: c606466aefef49e4336ef81bb78aa50d
+tags: [geometry]
+---
+접시를 테이블의 테두리와 접하도록 배치하는게 접시를 최대한 많이 배치할 수 있어서 좋다.
+그렇게 배치된 인접한 두 접시 사이의 관계를 생각해보자.
+인접한 두 접시 사이의 거리를 d 라고 하면
+d = 2 * (R - r) * sin(pi/n)
+인접한 두 접시가 겹치면 안되므로 d/2 >= r 을 만족해야 하므로
+(R - r) * sin(pi/n) >= r 을 만족하면 YES, 아니면 NO 다.

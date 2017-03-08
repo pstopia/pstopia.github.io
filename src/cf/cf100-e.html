@@ -1,0 +1,33 @@
+---
+layout: solution
+round_name: Codeforces Round #100
+prob_name: '[E] New Year Garland'
+title: '[E] New Year Garland - Codeforces Round #100'
+prob_link: 'http://codeforces.com/contest/140/problem/E'
+gist: 92399a5101266feb98d04a3d2bc4fe29
+tags: [dp, combinatorics]
+---
+lamp 가 k개 있는 레이어에 전구를 배치하는 경우의 수를 구하고
+이를 이용해 한 레이어씩 쌓아올리는 DP를 생각할 수 있다.
+
+layer[i][j] = lamp 가 i개 있는 레이어에 j종류의 전구를 인접한 전구가 같지 않도록 배치하는 경우의 수. .
+              색깔만 달라지고 형태는 같은 경우는 제외함.
+            =   layer[i-1][j-1]               (끝에 j번 전구를 배치)
+              + layer[i-1][j] * (j-1)         (끝에 1~j번 전구를 배치)
+
+색깔만 달라지고 형태는 같은 경우는 제외한다는 것에 주의해야한다.  (1213 과 2321 은 같은 것)
+실제로 색깔을 배치하는 과정은 밑에서 DP를 돌릴 때 같이 한다.
+왜 이렇게 헷갈릴만한 방식으로 구하냐면
+combination 을 쓰지 않기 위해 그렇다. modulo가 소수가 아니라서...
+
+D[i][j] = i번 레이어까지 쌓았고, 마지막 레이어에 색이 정확히 j개 있는 경우의 수.
+        =   mPj * layer[lamp[i]][j] * sum( D[i-1][k] , 1 <= k <= lamp[i-1] )
+          -  j! * layer[lamp[i]][j] * D[i-1][j]
+
+i-1번 레이어에 k개 색이 있는 경우에다 i번 레이어에 j개 색이 있는 경우를 곱한 것이다.
+만약 k != j 라면 이 두 레이어의 색집합은 무조건 다르다.
+만약 k == j 라면 이 두 레이어의 색집합이 같은 경우를 빼줘야 한다. 그게 바로 두번째 항이다.
+
+DP 상태의 수가 최대 n * m 이 될 것처럼 보이지만 그렇지 않다.
+i번 레이어에 색을 최대한 많이 넣어봤자 lamp[i] 개 밖에 넣을 수 없다.
+따라서 유효한 DP 상태의 수는 sum(lamp[i]) 개 뿐이다.

@@ -1,0 +1,24 @@
+---
+layout: solution
+round_name: Codeforces Round #100
+prob_name: '[F] New Year Snowflake'
+title: '[F] New Year Snowflake - Codeforces Round #100'
+prob_link: 'http://codeforces.com/contest/140/problem/F'
+gist: 1d900ee1d6405fec19c75d7d856732f8
+tags: [geometry, brute force]
+---
+(xc, yc) 가 symmetry center가 될 수 있는지를 어떻게 확인할까?
+점 (xi, yi) 에 대해 (2*xc - xi, 2*yc - yi) 가 존재해야 대칭이다.
+그런 것이 존재하지 않는 (xi, yi) 가 최대 k개 이하일 때, (xc, yc)는 symmetry center가 될 수 있다.
+이건 이분탐색이나 set을 써서 할 수도 있지만, 정렬 한 번 해놓고 선형시간에 확인할 수도 있다.
+(xi, yi)를 x순, y순으로 정렬해놓으면 (2*xc - xi, 2*yc - yi)는 정확히 역순이 된다.
+따라서 two pointer를 사용해 대칭점이 존재하는지를 확인할 수 있다.
+
+(xc, yc) 가 될 수 있는 후보를 골라야 한다.
+(xi, yi)를 x순, y순으로 정렬해놓으면
+원래대로라면 1번점은 n번점과 대칭관계, 2번점은 n-1번점과 대칭관계, ... 를 이루어야 한다.
+여기서 k개 이하가 빠진 상황이기 때문에
+정렬된 점 리스트에서 맨앞의 k+1개와 맨뒤의 k+1개 사이의 쌍을 모두 골라 그 쌍의 중점을 (xc, yc)로 두어보면 된다.
+O(nlgn + k^2*n)
+
+예외로 k >= n 인 경우엔 symmetry center 가 될 수 있는 곳이 무한히 많다.
