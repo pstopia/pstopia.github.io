@@ -1,0 +1,26 @@
+---
+layout: solution
+round_name: Topcoder SRM 506 Div1
+prob_name: '[Hard] SlimeXSlimeRancher'
+title: '[Hard] SlimeXSlimeRancher - Topcoder SRM 506 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11360'
+gist: c3343caa8673c7dd5a3db7dd1cded409
+tags: [dp]
+---
+슬라임이 2마리만 있는 문제를 먼저 풀어보자.
+(슬라임1의 능력치_i, 슬라임2의 능력치_i) 를 좌표로 생각해 2차원 공간에 좌표를 찍는다. (좌표압축을 해둔다)
+이제 원래 문제는
+점들을 위,오른쪽 으로 적당히 옮겨서
+모든 i, j 에 대해 (X[i] <= X[j] && Y[i] <= Y[j]) 혹은 (X[j] <= X[i] && Y[j] <= Y[i]) 를 만족시키는
+최소 비용을 구하는 문제로 바뀌었다.
+
+그럼 다음과 같은 DP를 생각할 수 있다.
+D[X][Y] = x <= X && y <= Y 인 모든 점들을 위와 같이 만족시키도록 조정할 때 드는 최소비용
+        = min(  D[X-1][Y] + (x==X&&y<=Y 에 있는 점들을 모두 (X,Y) 로 옮기는 비용) ,
+                D[X][Y-1] + (x<=X&&y==Y 에 있는 점들을 모두 (X,Y) 로 옮기는 비용)   )
+
+뒤의 비용함수는
+맨 처음에 전처리를 잘 해놓든지, 아니면 관리를 잘 하든지 해서 O(1) 에 구할 수 있다.
+
+원래 문제는 슬라임이 3마리 이므로
+3차원으로 확장해서 풀면 된다.

@@ -1,0 +1,17 @@
+---
+layout: solution
+round_name: Topcoder SRM 506 Div1
+prob_name: '[Medium] SlimeXGrandSlimeAuto'
+title: '[Medium] SlimeXGrandSlimeAuto - Topcoder SRM 506 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11334'
+gist: 5e90f0675d16affaaffcde98c6335921
+tags: [graph, mcmf, hungarian]
+---
+district[i] -> district[i+1]  의 경로를 생각해보자
+이렇게 이동하는 도중에 차를 탄다고 결정했다면
+district[i]에서 출발하여 걸어서 차가 위치한 도시 아무데나 간 다음
+그 차를 타고 바로 district[i+1] 까지 가는 것이 최적이다
+다른 짓을 하거나 차를 두 번 이상 타는 것은 무조건 손해다.
+따라서 차 하나는 district[i] -> district[i+1] 인 경로 중 하나에 기여할 수 있고, 그 기여분을 계산할 수 있다.
+이제 각 차들이 어느 경로에 기여할 지를 결정해서 기여분의 합을 최대로 만들어야한다. 이것은 바로 이분가중매칭 이다!
+MCMF나 헝가리안메소드를 쓰면 된다.
