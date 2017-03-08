@@ -1,0 +1,21 @@
+---
+layout: solution
+round_name: Topcoder SRM 511 Div1
+prob_name: '[Medium] FiveHundredEleven'
+title: '[Medium] FiveHundredEleven - Topcoder SRM 511 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11484'
+gist: b6794f4718c5b14f26df1d214821995f
+tags: [dp]
+---
+D[turns][memory] = 둘이 합쳐 turns장의 카드를 사용했고 현재 메모리상태가 memory 일 때
+                   이 상황을 받은 사람이 이길 수 있는가?
+
+memory | c = memory  인 카드 c의 개수를 k장이라 해보자.
+그 k장 중 (k - turns)장 만큼은 memory 에 OR를 해도 메모리 값이 변하지 않는다.
+그 k장 중 turns장 은 이미 쓰인 카드다.
+k장을 제외한 나머지 카드는 memory 에 OR를 하면 무조건 값이 변한다.
+여기서 (k - turns)장이 실제로 어떤 카드인지는 중요하지 않다. OR를 해도 어차피 메모리가 변하지 않으니까.
+
+k - turns > 0 이면  D[turns + 1][memory]  를 참조
+나머지 값이 변하는 카드에 대해  D[turns + 1][memory | c]  를 참조
+하여 dp값을 구하자

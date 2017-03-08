@@ -1,0 +1,27 @@
+---
+layout: solution
+round_name: Topcoder SRM 512 Div1
+prob_name: '[Medium] SubFibonacci'
+title: '[Medium] SubFibonacci - Topcoder SRM 512 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11288'
+gist: 2d535cb8334c96fd2952e64bb616990a
+tags: [math, brute force]
+---
+두명이 만든 수열을 이어붙였을 때 오름차순이 되어야 한다는 점으로부터
+입력으로 들어온 수열을 오름차순 정렬한 뒤 쪼개서 풀면 된다는 것을 깨달을 수 있다.
+
+이제 임의의 수열 S가 주어졌을 때
+'fibonacci sequence'의 부분수열이면서 S의 부분수열인 것 중 제일 긴 것을 찾는 문제를 풀자.
+원소가 1개, 2개인 수열은 무조건 전체가 fibonacci sequence 이니 이런것은 제외.
+S[i] 를 우리가 찾는 수열의 맨 처음이라고 하고
+fibonacci sequence 에서 그 다음으로 오는 수를 b 라고 하자.
+그럼 fibonacci sequence 는  S[i], b, S[i]+b, S[i]+2b, 2S[i]+3b, 3S[i]+5b, ... 이런식으로 될 것이다.
+이 sequence의 k번째 수는  f[k]*S[i] + f[k+1]*b  로 나타낼 수 있다. ( f = 1, 0, 1, 1, 2, 3, 5, 8, 13, ... )
+i < j 인 S[j] 가 이 fibonacci sequence 에 k번째로 등장한다고 하자.
+S[j] = f[k]*S[i] + f[k+1]*b  로부터 b를 구할 수 있다.
+따라서 j와 k를 결정하면 두번째수 b를 구할 수 있고
+이를 통해 이 fibonacci sequence 에 등장하는 수의 개수를 셀 수 있다.
+
+시간복잡도 상으로는 O(n^5 * lgn) or O(n^5) 이라 TLE 걱정을 할 수 있는데
+j, k 를 결정했을 때, 유효한 b가 나오는 경우가 매우 드물어서 빠르게 돈다고 한다.
+에디토리얼에는 엄밀한 증명은 없고 피보나치의 성질 때문이라고만 나와있다.

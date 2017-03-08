@@ -1,0 +1,14 @@
+---
+layout: solution
+round_name: 'Topcoder SRM 513 Div1'
+prob_name: '[Easy] YetAnotherIncredibleMachine'
+title: '[Easy] YetAnotherIncredibleMachine - Topcoder SRM 513 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11502'
+gist: 6c2dc9e0311b52884504477719baaba4
+tags: [implementation]
+---
+어떤 mount[i] 가  ball[k] < mount[i] < ball[k+1]  인 위치에 있다고 해보자
+이 mount에 걸린 막대는 항상 [ball[k]+1, ball[k+1]-1] 사이의 구간에 존재해야 한다.
+이 구간을 벗어나면 항상 ball과 부딪치기 때문이다.
+따라서 각 mount마다 막대가 존재할 수 있는 위치의 가짓수를 쉽게 구할 수 있고
+이걸 다 곱하면 된다.
