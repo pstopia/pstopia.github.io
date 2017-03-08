@@ -1,0 +1,27 @@
+---
+layout: solution
+round_name: Topcoder SRM 507 Div1
+prob_name: '[Hard] CubeBuilding'
+title: '[Hard] CubeBuilding - Topcoder SRM 507 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11264'
+gist: ee4bfb989bd6656b3c662fea3fa6c88b
+tags: [dp, combinatorics]
+---
+빨강, 초록, 파랑 각각의 개수를 전부 상태로 두려고 하지 말고
+그냥 앞면에 보이는 블럭의 개수와 나머지 블럭의 개수만 갖고 경우의 수를 구한뒤
+나머지 블럭에 남은 색을 배정해주는 경우를 combination 으로 구해 곱하면 된다.
+
+각 열마다 빌딩을 쌓는 것은 서로 독립적으로 이루어지므로
+다음과 같은 DP를 생각해볼 수 있다.
+
+E[i][j][k] = i*N 에 j개의 블럭을 이용해 빌딩을 쌓았는데 앞면에 k개의 블럭이 보이는 경우의 수
+= sum( E[i-1][j-p][k-q] * D[N][p][q] )
+
+D[i][j][k] = 1*i 에 j개의 블럭을 이용해 빌딩을 쌓았는데 앞면에 k개의 블럭이 보이는 경우의 수
+=  sum( D[i-1][j-p][k],  0 <= p <= j && p <= k )   i-1에서도 앞면에 k개가 보였던 경우
+ + sum( D[i-1][j-k][p],  0 <= p < j )              i-1까진 앞면에 k개 미만이 보였고 i에서 처음으로 k개가 보인 경우
+
+답은
+  sum( E[N][R+G+B][p] * comb[R+G+B-p][G] * comb[R+G+B-p-G][B] ,  1 <= p <= R )
++ sum( E[N][R+G+B][p] * comb[R+G+B-p][R] * comb[R+G+B-p-R][B] ,  1 <= p <= G )
++ sum( E[N][R+G+B][p] * comb[R+G+B-p][R] * comb[R+G+B-p-R][G] ,  1 <= p <= B )

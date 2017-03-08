@@ -1,0 +1,28 @@
+---
+layout: solution
+round_name: Topcoder SRM 508 Div1
+prob_name: '[Hard] BarbarianInvasion2'
+title: '[Hard] BarbarianInvasion2 - Topcoder SRM 508 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11174'
+gist: 3b4ef2a3cc9b67c6243128bf6ddaba30
+tags: [geometry, math, maximum flow]
+---
+바바리안이 1000000! 명이나 있으니 무한히 많다고 생각해도 된다.
+즉, 다각형의 경계에 무한히 연속한 점으로 취급하는 것이다.
+
+시간 t 안에 모든 바바리안들이 도시에 도달하는 것이 가능한가?
+라는 결정문제를 푼 뒤, 이분탐색으로 원래 문제를 해결하는 것을 생각해볼 수 있다.
+
+어떤 도시에 시간 t 안에 도달할 수 있는 바바리안은
+그 도시를 중심으로 반지름이 t인 원 안에 있는 바바리안이다.
+도시마다 반지름 t인 원을 그리고, 그 안에 속하는 다각형의 경계 부분을 구간으로 만들어 갖고 있자.
+이 구간들은 이 도시로 쳐들어갈 수 있는 후보들이 된다.
+이제 이 구간들을 갖고 network 를 만든 후 maximum flow 를 구해서
+N개의 equal group 이 만들어지는지 체크해도 되지만
+도시의 수가 매우 작으므로 marriage theorem 을 이용해 확인할 것이다.
+
+주어진 도시들의 모든 부분집합 P에 대해 
+그 부분집합 안에 있는 도시들의 구간을 합집합한 구간의 길이 L을 구한 뒤
+L >= |P| * perimeter / N   인지 확인한다.
+저 부등식을 만족하지 않는 부분집합이 하나라도 있으면 N개의 그룹으로 나눌 수 없는 것이고,
+모든 부분집합이 만족한다면 N개의 그룹으로 나눌 수 있다.

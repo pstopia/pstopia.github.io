@@ -1,0 +1,19 @@
+---
+layout: solution
+round_name: Topcoder SRM 507 Div1
+prob_name: '[Medium] CubePacking'
+title: '[Medium] CubePacking - Topcoder SRM 507 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11266'
+gist: 078a0c139d650e0cdfe9ab47b7c907fc
+tags: [math, brute force]
+---
+큐브를 다 쌓고 박스로 포장했을 때, 박스안의 빈공간이 더 적게 남을 수록 전체 부피가 작아진다
+박스안의 빈공간을 작게 만드는 것이 목표가 되었다.
+
+빈공간의 부피가 k가 되도록 박스포장을 할 수 있냐? 라는 문제를 생각해보자
+그 박스의 부피 V = (큐브의 부피합) + k 이고, 이 V를 V = a * b * c (a,b,c는 자연수) 로 나타낼 수 있냐? 라는 문제가 된다.
+V의 약수들을 구한 뒤, 거기서 a, b를 고르는 경우를 모두 다 체크해보면 된다
+
+k의 범위는 어떻게 될까?
+L큐브를 일자로 쌓고 나머지 1큐브도 그 위에 L*L 로 쌓은 상황을 생각해보자
+이 경우 생길 수 있는 빈공간의 개수는 0개~L*L-1개 이다.

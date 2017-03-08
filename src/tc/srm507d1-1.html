@@ -1,0 +1,15 @@
+---
+layout: solution
+round_name: Topcoder SRM 507 Div1
+prob_name: '[Easy] CubeStickers'
+title: '[Easy] CubeStickers - Topcoder SRM 507 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11315'
+gist: 2ee82432dacf169775805635fbc31f05
+tags: [graph]
+---
+육면체의 각 면을 정점으로 두고 인접한 두 면 사이에 간선을 이으면 그래프가 나온다.
+그러면 육면체에 스티커를 붙이는건 그래프 채색문제가 된다.
+그래프의 생긴 모양새를 보면 색깔의 종류가 2개 이하면 불가능하고
+같은 색을 3개 이상의 점에 칠하는 것도 불가능하다.
+색깔의 종류를 k개라고 하고, sticker 배열에서 두번 이상 등장하는 색깔의 종류를 d개라고 하면
+k + d >= 6 일 때 조건에 맞게 채색이 가능하다.

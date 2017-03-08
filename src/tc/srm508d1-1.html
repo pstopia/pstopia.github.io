@@ -1,0 +1,20 @@
+---
+layout: solution
+round_name: Topcoder SRM 508 Div1
+prob_name: '[Easy] DivideAndShift'
+title: '[Easy] DivideAndShift - Topcoder SRM 508 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11434'
+gist: d9895b70afdf26486db1ae730179b026
+tags: [math]
+---
+귀찮으니까 M을 0-index 로 만들고 시작하자
+길이 N의 수열을 p개로 나누면 새로운 수열에서 M은 M % y 로 변한다 (y = N / p)
+오른쪽으로 shift 하고 divide 함 : (M + 1) % y
+divide 하고 오른쪽으로 shift 함 : (M % y + 1) % y
+이 둘은 같다. 왼쪽 shift도 마찬가지. 따라서 연산을 뭘 먼저 하든 상관없다.
+divide를 먼저 다 하고 그 다음에 shift를 몰아서 하는 전략을 취하자.
+
+문제에서는 항상 prime p 를 고른 후 p개로 나눌 수 있다고 했지만
+생각해보면 이 prime들을 조합하여 divide를 반복해서 수열을 원하는 길이로 만들 수 있다.
+대신 그 길이는 N의 약수가 되어야 한다.
+그래서 N의 약수를 돌면서 수열의 최종 길이 y를 정하고, M이 0이 되도록 왼쪽 혹은 오른쪽으로 shift해주면 된다.
