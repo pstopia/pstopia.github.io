@@ -1,0 +1,20 @@
+---
+layout: solution
+round_name: 'Topcoder SRM 517 Div1'
+prob_name: '[Easy] CompositeSmash'
+title: '[Easy] CompositeSmash - Topcoder SRM 517 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11535'
+gist: 95523350ed6678ca65f69a9919d42140
+tags: [math]
+---
+1) N == target 이면 Yes,  N % target != 0 이면 No
+-> 자명
+2) target이 소수면 Yes
+-> 자명
+3) 어떤 소수 p에 대해 target == p^2 && N == p^k 를 만족하면 Yes
+-> 적절한 귀납법으로 답이 Yes라는 것을 증명할 수 있다.
+4) 그 이외엔 No
+4-1) target이 두 개 이상의 소인수를 갖고 있는 경우
+4-2) 어떤 소수 p에 대해 target == p^k  (k>=3) 인 경우
+4-3) 어떤 소수 p에 대해 target == p^2 && N != p^k 인 경우
+-> 모두 적절한 귀납법으로 답이 No라는 것을 증명할 수 있다.

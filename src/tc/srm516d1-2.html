@@ -1,0 +1,31 @@
+---
+layout: solution
+round_name: Topcoder SRM 516 Div1
+prob_name: '[Medium] RowsOrdering'
+title: '[Medium] RowsOrdering - Topcoder SRM 516 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11114'
+gist: 21ac427d8d5a03153a7a6ad4c5c04639
+tags: [greedy]
+---
+우선 order를 1-index가 아니라 0-index라고 하자. (나중에 답에 rows.size() 만큼 더해주면 된다)
+그럼 어떤 row의 order라는 것은 그 row를 50진수로 나타낸 값이라고 봐도 무방하다.
+
+step 2 에서 고르는 column의 permutation 은
+50진수를 비교할 때 비교하는 자리순서를 결정한다
+일단 이 permutation 은 그냥 0, 1, 2, .. 로 고정하고 생각하자.
+step 1 에서 각 열마다 고르는 permutation 은 결국
+그 열 안에서의 digit 비교함수라고 볼 수 있다.
+
+rows[] 를 다 더한 값 S에 관심이 있으므로 우선 자리수별로 더한 값부터 고려해보자
+P(i) = i번째 열의 값을 다 더한 값
+그러면 S = P(0)*50^0 + P(1)*50^1 + P(2)*50^2 + ...
+S를 최소화해야하므로 P(i)도 모두 최소화해야한다.
+P(i)가 작아지려면 i번째 열에 가장 많이 등장하는 알파벳엔 0을, 그 다음 알파벳엔 1을, ...
+제일 적게 등장하는 알파벳엔 49를 배정하면 된다.
+이렇게 배정하면 i번째 열 안에선 최적이다.
+
+이제 step 2 에서 고르는 permutation 을 조작해보자
+permutation 을 조작하면 결국 P(i) 가 50^k 와 곱해지는 순서가 뒤바뀌게 된다.
+언제 S가 최소화되냐 하면
+가장 큰 P(i)를 50^0 에, 그 다음 P(i)를 50^1 에, ...
+제일 작은 P(i)를 마지막 자리에 배정하면 된다.

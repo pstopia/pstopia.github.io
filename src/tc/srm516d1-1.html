@@ -1,0 +1,12 @@
+---
+layout: solution
+round_name: 'Topcoder SRM 516 Div1'
+prob_name: '[Easy] NetworkXOneTimePad'
+title: '[Easy] NetworkXOneTimePad - Topcoder SRM 516 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=10846'
+gist: f008f6127965a629dfa0b1afe999657c
+tags: [brute force]
+---
+모든 cipher 의 원문이 존재해야 함 -> cipher[0] 의 원문도 존재해야함
+cipher[0] 의 원문을 plain[i] 라고 하자. plain[i] ^ key = cipher[0] 이므로  key = plain[i] ^ cipher
+모든 cipher[k] 에 대해  cipher[k] ^ key 의 값이 plain 안에 존재하면 이 key 는 합당한 키가 됨.

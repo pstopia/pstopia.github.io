@@ -1,0 +1,30 @@
+---
+layout: solution
+round_name: Topcoder SRM 517 Div1
+prob_name: '[Medium] AdjacentSwaps'
+title: '[Medium] AdjacentSwaps - Topcoder SRM 517 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11537'
+gist: 5a3623a661cff81a5ba0be898a2fea1e
+tags: [dp]
+---
+문제를 뒤집어서, 주어진 순열을 정렬된 순열로 바꾸는 경우의 수를 구해도 답은 같다. 그걸 구해보자.
+순열 { a, b, c, d, e } 가 있을 때,
+만약 b와 c를 swap해서  { a, c, b, d, e } 가 되었다고 해보자.
+그럼 이제 { a, c } 와 { b, d, e } 는 독립적으로 다룰 수 있다. 서로 섞이는 일이 다시는 없기 때문이다.
+이를 통해 DP를 생각할 수 있다.
+
+D[ S[0..n-1] ] = 순열 S를 정렬된 순열로 바꾸는 경우의 수
+ = sum(  D[ S[0..k-1], S[k+1] ] * D[ S[k], S[k+2..n-1] ] * comb[n-2][k]  )
+    ( 0 <= k < n-1 , S[k] > S[k+1] )
+
+순열 S가 주어지면 걔를 정렬된 순열로 바꿔야 하기 때문에
+S[k] < S[k+1] 인 지점을 뒤집으면 안된다. 반드시 S[k] > S[k+1] 인 지점을 뒤집어야 한다.
+그래서 그 지점을 뒤집고, 문제를 분할한 것이다.
+마지막에 곱한 combination 은 양쪽에서 구한 정답 순열이 섞이는 경우를 곱한 것이다.
+
+memoization을 구현할 때, S를 그냥 map의 key로 바로 사용하는 식으로 구현해도 시간안에 나온다.
+DP의 시간복잡도에 더해, key 끼리 비교하는 시간이 추가되는 것인데 그게 많아봐야 O(n) 이기 때문이다.
+
+이런 식으로 하는게 아닌
+그냥 평범하게 D[i][j] = i~j 를 정렬된 순열로 바꾸는 경우의 수
+로 세워 구할 수도 있다. 그건 생략.
