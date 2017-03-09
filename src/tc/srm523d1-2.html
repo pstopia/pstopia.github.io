@@ -1,0 +1,20 @@
+---
+layout: solution
+round_name: Topcoder SRM 523 Div1
+prob_name: '[Medium] BricksN'
+title: '[Medium] BricksN - Topcoder SRM 523 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11616'
+gist: 1d64833709dacafbf0fe43d9285a7c57
+tags: [dp, combinatorics]
+---
+DP로 해결해보자
+
+C[i] = 1xi 를 채우는 경우의 수
+     = sum(  C[i-j]  ,  1 <= j <= i , j <= k  )
+
+D[i][j] = 최대 높이가 i이고 밑판 길이가 j인 building 의 경우의 수
+        =  D[i-1][j] * C[j]
+         + sum(  D[i-1][k] * C[k] * D[i][j-1-k]  ,  0 <= k < j  )
+
+첫번째 항은 밑판 전체를 채우는 경우
+두번째 항은 밑판 왼쪽 끝에 길이 k만큼 연속해 채우는 경우

@@ -1,0 +1,15 @@
+---
+layout: solution
+round_name: 'Topcoder SRM 523 Div1'
+prob_name: '[Easy] CountingSeries'
+title: '[Easy] CountingSeries - Topcoder SRM 523 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=10957'
+gist: 65661ec29f16bd5f36291651baf76ce5
+tags: [math, brute force]
+---
+a + bx <= upperBound   ->   x <= (upperBound - a) / b
+그래서 a+bx 꼴을 만족하는 수의 개수는 floor((upperBound - a) / b) + 1 개
+여기에
+c * d^y 꼴이면서 upperBound 이하인 수를 전부 순회하면서
+그 수가 a + bx 꼴이 아니면 답에 추가하면 된다.
+d=1 인 경우의 예외처리를 잊지 말자.
