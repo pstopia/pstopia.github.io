@@ -1,0 +1,25 @@
+---
+layout: solution
+round_name: 'Topcoder SRM 522 Div1'
+prob_name: '[Easy] RowAndCoins'
+title: '[Easy] RowAndCoins - Topcoder SRM 522 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11566'
+gist: 820d8b800c44eeab439c14656589dd8f
+tags: [greedy, dp]
+---
+게임판의 양 끝 중 하나에 A가 쓰여있다면
+Alice는 첫턴에 그 칸을 뺀 나머지에 전부 동전을 놓으면 필승이다.
+
+그럼 이제 양 끝이 모두 B인 경우가 문제다.
+만약 Alice가 첫턴에 동전을 놓은 구간이 양 끝 중 하나를 덮는다면
+Bob은 반대쪽 B만 남도록 동전을 항상 놓을 수 있으므로 이렇게 되면 Bob이 필승이다.
+Alice의 남은 선택은 첫턴에 동전을 가운데구역에 적당히 놓는 것이다.
+하지만 그래도 Bob이 무조건 이길 수 있는 방법이 있다.
+
+Alice가 첫턴을 플레이한 다음의 게임판 상태가 이렇다고 하자.
+BAABBABABxxxxxxBABBBABAAB
+Bob은 다음턴에 다음과 같이 놓으면 무조건 이길 수 있다.
+BAABBABABxxxxxxxxxxxxxxxB  혹은
+BxxxxxxxxxxxxxxBABBBABAAB
+
+그냥 평범하게 bitmask 를 이용한 게임 DP를 돌려도 되긴 하다.

@@ -1,0 +1,19 @@
+---
+layout: solution
+round_name: Topcoder SRM 520 Div1
+prob_name: '[Medium] SRMIntermissionPhase'
+title: '[Medium] SRMIntermissionPhase - Topcoder SRM 520 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11496'
+gist: 6417ec604b52d0f5132e03195937ed67
+tags: [dp, combinatorics]
+---
+간단한 DP로 해결할 수 있다.
+
+C_i[j][k] = 스코어보드에서 i등인 사람이  1번~j번 문제까지 얻은 점수의 합이 k일 경우의 수
+          = sum(  C_i[j-1][k-x] , (j번 문제의 minScore) <= x <= (j번 문제의 maxScore)  )
+
+D[i][j] = 스코어보드에서 i등~N등을 배정했고, i등인 사람의 총점이 j점 이하인 경우의 수
+        = D[i][j-1] + D[i+1][j-1] * C_i[3][j]
+
+C_i 를 구할 때, 누적합을 이용하면 시간내에 구할 수 있다.
+답은 D[1][200000]

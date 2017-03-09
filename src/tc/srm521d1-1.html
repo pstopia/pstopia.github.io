@@ -1,0 +1,15 @@
+---
+layout: solution
+round_name: 'Topcoder SRM 521 Div1'
+prob_name: '[Easy] MissingParentheses'
+title: '[Easy] MissingParentheses - Topcoder SRM 521 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=10943'
+gist: cbb823702c3cf0ee5d66b4c5f5fcb562
+tags: [greedy]
+---
+문자열을 앞에서부터 보면서
+v = ('('가 나온 횟수) - (')'가 나온 횟수)  이 값을 업데이트 하자.
+v < 0 이 되는 시점이 생겼다면, 그 지점에서 이미 올바른 괄호문자열이 아니게 된다.
+이것은 이 뒤에서 절대 해결할 수 없고 무조건 이 앞에 '('를 넣어 해결해야 한다.
+문자열의 맨 마지막까지 다 살펴본 뒤에 v != 0 이라면, 이것도 역시 올바른 괄호문자열이 아니다.
+v 만큼 ')'를 맨 뒤에 넣어 해결해야 한다.
