@@ -1,0 +1,18 @@
+---
+layout: solution
+round_name: 'Topcoder SRM 519 Div1'
+prob_name: '[Easy] BinaryCards'
+title: '[Easy] BinaryCards - Topcoder SRM 519 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11552'
+gist: 769b3a88e82d46a64a2b33c32e1ff638
+tags: [implementation]
+---
+A와 B를 이진수로 나타내어 보면
+A : a b c d 0 x y z ...
+B : a b c d 1 p q r ...
+이런 식으로 앞의 일정 부분은 같고, 그 이후 0, 1 로 달라지는 시점이 생긴다.
+앞의 같은 부분은 A->B 로 진행하는 동안 계속 같게 유지된다. 문제는 0, 1 로 달라지는 위치부터이다.
+그런데 규칙에 의해서 0을 1로 바꾸기 위해서는 그 뒤의 비트를 모두 1로 바꾼 후 여야 한다.
+따라서 A, B 가 저런식으로 주어졌을 때 답은
+a b c d 1 1 1 1 ...
+이 된다.

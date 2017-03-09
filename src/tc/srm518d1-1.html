@@ -1,0 +1,17 @@
+---
+layout: solution
+round_name: 'Topcoder SRM 518 Div1'
+prob_name: '[Easy] LargestSubsequence'
+title: '[Easy] LargestSubsequence - Topcoder SRM 518 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11471'
+gist: b06564d2e25dc1ebff0de4e49632574a
+tags: [greedy]
+---
+답 문자열 y의 가장 맨 앞엔 뭐가 오는게 좋을까?
+주어진 문자열 x의 문자들 중 제일 큰 문자가 오는게 무조건 좋다.
+그렇게 고른 문자를 x[i] 라고 하면, 다음 문자는 x[i+1] ~ x[n] 사이에서 골라야만 한다.
+이 때, 답을 최대한 크게 만들려면 다음 스텝의 후보가 많은 것이 좋다.
+따라서 제일 큰 문자가 여러개 있으면 그 중 가장 앞에 있는 것을 골라야 한다.
+
+매 스텝마다 주어진 범위에서 제일 큰 문자 (여러개 있으면 가장 앞에 있는 것) 를 골라 답에 추가하고
+그 뒤의 범위에서 다음 스텝을 반복적으로 수행하면 된다.
