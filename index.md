@@ -14,5 +14,7 @@ title: Home
     * [Fenwick Tree]({{ site.baseurl }}/notes/data-structure/fenwick-tree/)
   * Graph
     * [SCC (Tarjan)]({{ site.baseurl }}/notes/graph/scc-tarjan/)
+    * [SCC (Kosaraju)]({{ site.baseurl }}/notes/graph/scc-kosaraju/)
+    * [BCC, Cut vertex, Bridge]({{ site.baseurl }}/notes/graph/bcc/)
   * Math
     * [Fast Fourier Transform]({{ site.baseurl }}/notes/math/fft/)
