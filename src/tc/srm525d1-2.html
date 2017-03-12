@@ -1,0 +1,30 @@
+---
+layout: solution
+round_name: Topcoder SRM 525 Div1
+prob_name: '[Medium] Rumor'
+title: '[Medium] Rumor - Topcoder SRM 525 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11664'
+gist: 3f53426d737531eeb63f6e8c0027b820
+tags: [graph, brute force]
+---
+A는 B를 믿는다 라는 관계를 B -> A 라는 간선으로 표현할 수 있다.
+그렇게 주어진 정보로 그래프를 그려보자.
+
+어떤 사람이 루머 A와 루머 B를 동시에 들었을 때
+어느 것을 먼저 전파할지 2가지 경우가 있는데
+이걸 2^n 으로 모든 경우를 다 결정해서 살펴볼 수 있다.
+
+각 정점 u마다
+s[u] = 0  ->  루머 2가지를 동시에 들었다면 루머 A를 먼저 전파
+s[u] = 1  ->  루머 2가지를 동시에 들었다면 루머 B를 먼저 전파
+를 결정한 상태에서의 답을 구해보자.
+
+time[u][d] = 정점 u가 루머 d를 듣는 최소시각
+이라고 정의해두고, 이걸 dijkstra 나 spfa 로 계산할 수 있다.
+만약 time[u][0] == time[u][1] 인 점이라면
+위의 s[u]의 값에 따라 u에서 나가는 간선의 가중치가 적절하게 변해야 하고
+아니라면 u에서 나가는 간선의 가중치는 그냥 1이다.
+
+s배열이 정해진 상태에서 답은
+max( time[u][d] ,  1 <= u <= n ,  0 <= d <= 1 )   이고
+따라서 전체 답은 이것의 최소값을 찾으면 된다.

@@ -1,0 +1,14 @@
+---
+layout: solution
+round_name: 'Topcoder SRM 525 Div1'
+prob_name: '[Easy] DropCoins'
+title: '[Easy] DropCoins - Topcoder SRM 525 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11665'
+gist: 0bdef3dcd71b7c96137de4b9c9c4ad33
+tags: [brute force]
+---
+적당히 조작을 하고 난 후, 남은 코인은 어떤 코인들일까?
+원래 주어진 판에서 특정 직사각형 영역안에 있는 코인들일 것이다.
+그래서 모든 직사각형 영역을 O((nm)^2) 으로 잡아보고
+그 안에 있는 동전의 개수가 정확히 K개 되면,
+그 영역안에 있는 동전들만 남도록 하는 최소의 조작횟수를 구해 답을 갱신해주면 된다.
