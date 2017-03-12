@@ -18,7 +18,7 @@ comments: false
 |SRM 508 Div1    |[Easy]({{ site.baseurl }}/src/tc/srm508d1-1/)|[Medium]({{ site.baseurl }}/src/tc/srm508d1-2/)|[Hard]({{ site.baseurl }}/src/tc/srm508d1-3/)|
 |SRM 509 Div1    |[Easy]({{ site.baseurl }}/src/tc/srm509d1-1/)|[Medium]({{ site.baseurl }}/src/tc/srm509d1-2/)|[Hard]({{ site.baseurl }}/src/tc/srm509d1-3/)|
 |SRM 510 Div1    |[Easy]({{ site.baseurl }}/src/tc/srm510d1-1/)|[Medium]({{ site.baseurl }}/src/tc/srm510d1-2/)|[Hard]({{ site.baseurl }}/src/tc/srm510d1-3/)|
-|SRM 511 Div1    |[Easy]({{ site.baseurl }}/src/tc/srm511d1-1/)|[Medium]({{ site.baseurl }}/src/tc/srm511d1-2/)| |
+|SRM 511 Div1    |[Easy]({{ site.baseurl }}/src/tc/srm511d1-1/)|[Medium]({{ site.baseurl }}/src/tc/srm511d1-2/)|[Hard]({{ site.baseurl }}/src/tc/srm511d1-3/)|
 |SRM 512 Div1    |[Easy]({{ site.baseurl }}/src/tc/srm512d1-1/)|[Medium]({{ site.baseurl }}/src/tc/srm512d1-2/)| |
 |SRM 513 Div1    |[Easy]({{ site.baseurl }}/src/tc/srm513d1-1/)|[Medium]({{ site.baseurl }}/src/tc/srm513d1-2/)| |
 |SRM 514 Div1    |[Easy]({{ site.baseurl }}/src/tc/srm514d1-1/)|[Medium]({{ site.baseurl }}/src/tc/srm514d1-2/)| |
