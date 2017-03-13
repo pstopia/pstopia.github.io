@@ -1,0 +1,17 @@
+---
+layout: solution
+round_name: 'Topcoder SRM 526 Div1'
+prob_name: '[Easy] DucksAlignment'
+title: '[Easy] DucksAlignment - Topcoder SRM 526 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11667'
+gist: 16955e5af7e0329d08ed6a1fbe96543b
+tags: [brute force, greedy]
+---
+모든 경우를 다 try해볼 수 있다.
+
+i번 행에 k번 위치부터 가로로 늘어놓는다고 해보자.
+(i, k) ~ (i, k+n-1) 에 늘어놓는다.
+이 때, 열번호가 작은 순으로 차례대로 늘어놓으면 비용이 최소가 된다.
+열마다 coin이 최대 한개뿐이기 때문에 군더더기없이 바로 이 방법이 최적임을 증명할 수 있다.
+
+열에 세로로 늘어놓는 경우도 마찬가지로 따지면 된다.
