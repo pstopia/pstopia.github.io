@@ -1,0 +1,32 @@
+---
+layout: solution
+round_name: Topcoder SRM 526 Div1
+prob_name: '[Medium] PrimeCompositeGame'
+title: '[Medium] PrimeCompositeGame - Topcoder SRM 526 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11506'
+gist: a2a3e9d22f56a043b832cbd32befff22
+tags: [dp, rmq]
+---
+우선, 다음과 같은 간단한 게임 DP를 떠올릴 수 있다.
+
+D[n][player] = 현재 n개의 돌이 있고, player 의 차례.
+               최선을 다했을 때, 앞으로 게임이 끝나는데 걸리는 턴수.
+               양수면 필승법이 있는 것, 음수면 필승법이 없는 것.
+
+에라토스테네스의 체로 1~N 사이의 모든 수의 소수/합성수 여부를 미리 구해두면
+이 DP를 O(N*K) 에 계산할 수 있다. 하지만 이러면 TLE!
+
+DP를 구할 때 정확히 어떤 프로세스로 진행하는지 자세히 살펴보자.
+
+D[n][0] = n-K <= j <= n-1 이고 소수인 j 에 대해
+          D[j][1] 이 음수인 j가 존재한다면
+		    -> -max{ D[j][1] | D[j][1] < 0 } + 1
+          D[j][1] 이 음수인 j가 존재하지 않는다면
+		    -> -max{ D[j][1] | D[j][1] >= 0 } - 1
+이 될 것이다.
+D[n][1] 도 비슷한 과정으로 진행된다. (합성수를 살핀다는 것만 다름)
+
+매 스텝마다 수행하는 것은
+어느 연속된 구간 안에 있는 소수/합성수 중 최대값을 구하는 연산이다.
+따라서 seg tree 나 힙 따위를 2개(혹은 4개) 만들어서 관리하면
+매 스텝마다 O(logN) 에 계산할 수 있다.
