@@ -1,0 +1,29 @@
+---
+layout: solution
+round_name: 'Topcoder SRM 526.5 Div1'
+prob_name: '[Easy] MagicCandy'
+title: '[Easy] MagicCandy - Topcoder SRM 526.5 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11706'
+gist: f8ffc1bb61a9006de2a01c8d97d58254
+tags: [math]
+---
+완전제곱수를 전부 지우는 프로세스를 한번 할 때
+원래 구간 ( p*p, (p+1)*(p+1) ] 에서는
+수가 최대 한개밖에 지워지지 않는다는 것을 관찰할 수 있다.
+지워지는 순서도 정해져있는데
+p*p + p + 1 이 제일 나중에 지워지고, p*p + 1 이 그 바로 전에 지워진다.
+
+왜 이렇게 되는지 간략하게 설명하면
+구간 ( p*p, (p+1)*(p+1) ] 에 있는 수는
+0 < k < p 인 k가 있을 때
+p*p + p + k  꼴 혹은 p*p + k  꼴 이다.
+완전제곱수를 전부 지우는 프로세스를 한번 하면, 이 수들은 전부 p만큼 줄어든다.
+p*p + p + k  ->  p*p + k
+p*p + k  ->  p*p - p + k = (p-1)*(p-1) + (p-1) + k
+수가 줄어드는 과정에서도 계속 p*p + p + k  꼴 혹은 p*p + k  꼴을 유지하게 된다.
+그러다가 p == k 가 되면 그 수가 지워지게 된다.
+결국 k = 1 인 꼴의 수들이 제일 나중에 지워진다는 것을 알 수 있다.
+
+p*p < n 이면서 제일 큰 p를 찾고
+p*p + p + 1 <= n  이면 이것이 답
+아니면 p*p + 1 이 답이 된다.
