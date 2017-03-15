@@ -1,0 +1,31 @@
+---
+layout: solution
+round_name: Topcoder SRM 526.5 Div1
+prob_name: '[Medium] MagicBlizzard'
+title: '[Medium] MagicBlizzard - Topcoder SRM 526.5 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11690'
+gist: 54f73c7deb4d555fb4e3a1d77d57b5d3
+tags: [probability]
+---
+E(total beauty)
+= E(sum(beauty(i) for cell i))
+= sum(E(beauty(i)) for cell i)
+= sum(E(snow(i)^2) for cell i)
+로 나타낼 수 있다.
+
+snow(i, k) = i번칸에 k번 스펠로 인해 떨어지는 눈의 개수   라고 해보자.
+snow(i, k) ~ B(amount[k], 1/area[k])  임을 알 수 있다.
+이항분포이므로 평균과 분산을 쉽게 구할 수 있다.
+E(snow(i, k)) = amount[k] / area[k]
+Var(snow(i, k)) = amount[k] / area[k] * (1 - 1/area[k])
+
+snow(i) = sum( snow(i, k)  for spell k )  이므로
+E(snow(i)) = sum( E(snow(i, k))  for spell k )
+Var(snow(i)) = sum( Var(snow(i, k))  for spell k )
+그리고 E(snow(i)^2) = Var(snow(i)) + E(snow(i))^2  이므로
+E(snow(i)^2) 를 계산해낼 수 있다.
+
+이걸 모든 셀에 대해 일일히 계산하면 시간초과가 난다.
+spell을 range값을 기준으로 정렬해놨다고 쳐보자.
+range[k]+1 ~ range[k+1] 사이에 있는 셀들은 전부 같은 기대값을 가지게 될 것이다.
+이걸 한번에 처리하면 시간내에 계산할 수 있다.
