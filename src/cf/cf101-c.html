@@ -1,0 +1,16 @@
+---
+layout: solution
+round_name: 'Codeforces Round #101 (Div. 2)'
+prob_name: '[C] Queue'
+title: '[C] Queue - Codeforces Round #101 (Div. 2)'
+prob_link: 'http://codeforces.com/contest/141/problem/C'
+gist: 6156b1f1f0e053a8a8fb8ee4daeb1d27
+tags: [greedy]
+---
+a[i] 가 작은 순으로 정렬해둔다.
+0 <= i < n 인 i에 대해, a[i] > i 인 i가 존재하면 조건에 맞는 order가 없는 것이다.
+아니라면, 조건에 맞는 order를 항상 만들 수 있다.
+
+리스트를 하나 만들고 0번 사람부터 n-1번 사람까지 차례대로 줄에 끼워넣을 것이다.
+i번째 사람을 볼 때, 그 사람을 리스트의 a[i]번째 위치에 끼워넣으면 된다.
+실제 키 값은 그냥 아무렇게나 배정해도 상관없다.

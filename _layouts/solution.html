@@ -10,6 +10,8 @@ layout: default
 
 <div class="psnote">{{ content }}</div>
 
+{% if page.gist %}
 {% gist page.gist %}
+{% endif %}
 
 </article>
