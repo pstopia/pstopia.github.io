@@ -1,0 +1,45 @@
+---
+layout: solution
+round_name: Topcoder SRM 513 Div1
+prob_name: '[Hard] Reflections'
+title: '[Hard] Reflections - Topcoder SRM 513 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=10998'
+gist: dc582e4db14d0f325283019a9de420f2
+tags: [brute force, meet in the middle]
+---
+mirrorX 를 이용할 때는 y, z 좌표가 바뀌지 않는다.
+mirrorY 와 mirrorZ 에 대해서도 같은 식으로 된다.
+따라서 x좌표의 이동, y좌표의 이동, z좌표의 이동을 각각 따로 볼 수 있다.
+solve(mirrors[], target)  같은 함수를 만들어서
+x좌표, y좌표, z좌표에 대해 각각 불러주면 된다.
+
+몇가지 더 관찰해야하는 성질이 있다.
+- 각 거울은 최대 한번만 사용하는 것이 좋다.
+- 내가 현재 좌표a에 있고, 좌표m에 있는 mirror를 이용한다면 2*m - a 로 이동하게 된다.
+  내가 거울의 왼쪽에 있든 오른쪽에 있든 상관없다.
+- normal move 를 한 후 mirror 를 이용한 것과 그 반대는 차이가 없다.
+  mirror 가 한 개 있을 때를 먼저 증명한 후, 그걸 여러개 이용하는 것을 생각하면 된다.
+이 성질들을 이용해 풀이를 만들어보자.
+
+m개의 mirror 가 X[1], X[2], ..., X[m] 에 위치해있다고 해보자.
+이 mirror 들을 전부 다 사용하고 마지막에 normal move 를 수행해서
+0에서 출발해 목적지까지 최소비용으로 이동하려고 한다.
+mirror 를 이용하는 순서를 a1, a2, ..., am 이라고 하면
+처음 mirror 를 이용하면  2*X[a1] - 0
+그다음 mirror 를 이용하면  2*X[a2] - (2*X[a1] - 0)
+그다음 mirror 를 이용하면  2*X[a3] - (2*X[a2] - (2*X[a1] - 0))
+...
+이런 식이 된다.
+mirror 를 전부 이용하고 나면 좌표는
+2*(X[a]+X[b]+X[c]+...) - 2*(X[p]+X[q]+X[r]+...)  와 같은 형태가 된다.
+그리고  (왼쪽에 있는 X의 개수) - (오른쪽에 있는 X의 개수) == 0 or 1  을 만족해야 한다.
+
+n개의 mirror 가 있으면 각 mirror 에 대해 3가지 선택지가 나온다.
+mirror 를 사용하지 않는다 / + 항에 둔다 / - 항에 둔다
+따라서 3^n 가지 경우를 전부 순회하면서
+(+ 항의 개수) - (- 항의 개수) == 0 or 1 인지 먼저 확인하고, 이걸 만족한다면 답을 갱신하면 된다.
+이렇게 하면 시간복잡도가 O(3^n * n) 이다. 이 방법으로는 시간내에 문제를 풀 수 없다.
+
+주목할만한건, n <= 20 이므로 반으로 나누면 시간안에 나올 것 같은 사이즈다.
+여기서 meet in the middle 이 등장한다!
+k <= (n+1)/2 인 k에 대해, mirror 를 k개 골
