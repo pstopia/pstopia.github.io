@@ -4,5 +4,12 @@ round_name: 'Codeforces Round #101 (Div. 2)'
 prob_name: '[D] Take-off Ramps'
 title: '[D] Take-off Ramps - Codeforces Round #101 (Div. 2)'
 prob_link: 'http://codeforces.com/contest/141/problem/D'
+gist: 8eb9841ef5bdb335f63ba6c06f01c62c
 tags: [graph, shortest path, dp]
 ---
+ramp 라는 것을 다시 써보자면
+x-p 에서 x+d 까지 시간 t+p 만에 이동할 수 있는 수단이다.
+
+x-p 에서 x+d 로 향하는 가중치 t+p 인 간선을 이어주고
+인접한 x좌표들에 양방향 간선을 이어준다.
+그 뒤에 0에서 L까지 가는 최단거리를 구해주면 된다.
