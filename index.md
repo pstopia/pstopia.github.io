@@ -13,6 +13,7 @@ title: Home
   * Data Structure
     * [Fenwick Tree]({{ site.baseurl }}/notes/data-structure/fenwick-tree/)
     * [Segment Tree - Bottom Up]({{ site.baseurl }}/notes/data-structure/segment-tree-bottomup/)
+    * [Disjoint Set]({{ site.baseurl }}/notes/data-structure/disjoint-set/)
   * Graph
     * [SCC (Tarjan)]({{ site.baseurl }}/notes/graph/scc-tarjan/)
     * [SCC (Kosaraju)]({{ site.baseurl }}/notes/graph/scc-kosaraju/)
