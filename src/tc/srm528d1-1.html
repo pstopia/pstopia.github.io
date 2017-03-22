@@ -1,0 +1,23 @@
+---
+layout: solution
+round_name: 'Topcoder SRM 528 Div1'
+prob_name: '[Easy] Cut'
+title: '[Easy] Cut - Topcoder SRM 528 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11564'
+gist: 0a17a1eadf209ee3496c57b839adcf1b
+tags: [greedy]
+---
+길이가 10의 배수인 장어가 있다면 그것들을 먼저 자르는 것이 이득이다.
+k*10 + r 꼴이라면 k개를 얻는데에 k번의 cut이 필요한데
+k*10 꼴이라면 k개를 얻는데에 k-1번의 cut 만 필요하기 때문에
+10의 배수인 장어를 먼저 처리하는 것이
+같은 수의 장어를 얻는데에 더 유리하다.
+
+예외가 있는데
+k*10 을 잘라야 하는데 남은 cut이 k-1 보다 작다면
+남은 cut 만큼 밖에 얻을 수 없다.
+따라서 10의 배수인 장어들을 처리할 때
+길이가 짧은 장어를 먼저 자르는 것이 이득이다.
+
+길이가 10의 배수인 장어를 다 처리하고도 cut이 남았다면
+남은 장어들을 자르면 된다.
