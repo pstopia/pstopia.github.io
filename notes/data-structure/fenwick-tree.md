@@ -3,7 +3,7 @@ layout: page
 title: Fenwick Tree
 ---
 
-결합법칙이 성립하는 operator * 가 있을 때,
+결합법칙, 교환법칙이 성립하는 operator * 가 있을 때,
 prefix value P[x] = a[1] * a[2] * ... * a[x] 를
 빠르게 구할 때 쓸 수 있는 트리 자료구조이다. 구현이 간단해서 자주 쓰인다.
 
