@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Segment Tree with Lazy Propagation - Bottom Up
+title: Segment Tree with Lazy Propagation (Bottom Up)
 ---
 
 결합법칙, 교환법칙이 성립하는 operator * 가 있을 때,

@@ -1,9 +1,11 @@
 ---
 layout: page
-title: Segment Tree - Bottom Up
+title: Segment Tree (Bottom Up)
 ---
 
-결합법칙이 성립하는 operator * 가 있을 때, a[l] * a[l+1] * ... * a[r-1] * a[r] 을 빠르게 구할 때 쓰는 자료구조이다.
+결합법칙이 성립하는 operator * 가 있을 때,
+한 원소의 값을 업데이트 하거나
+a[l] * a[l+1] * ... * a[r-1] * a[r] 을 빠르게 구할 때 쓰는 자료구조이다.
 
   * 공간 복잡도 : O(n)
   * 시간 복잡도
