@@ -1,0 +1,38 @@
+---
+layout: solution
+round_name: Topcoder SRM 529 Div1
+prob_name: '[Medium] MinskyMystery'
+title: '[Medium] MinskyMystery - Topcoder SRM 529 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11739'
+gist: 7b96640012906d2dd50611e88d07d3d8
+tags: [math]
+---
+주어진 알고리즘을 시간을 들여 잘 해석해보면
+결국 다음과 같은 코드를 돌리라는 말과 같다.
+
+ans = 2;
+for (i = 2; i <= N; ++i) {
+    ans += 3*N + N/i;
+    if (N % i == 0) return ans;
+    ans += N + 2;
+}
+
+N제한이 크므로 빠른 시간안에 계산할 수 있어야 한다.
+다른 항은 모두 상수시간에 되는데 N/i 항은 상수시간에 계산할 수 없다.
+sum(floor(N/i)) 를 빠르게 구하는 법을 생각해보자.
+sqaure root decomposition 과 비슷한 방식으로 접근할 수 있는데
+
+1) i <= sqrt(N) 인 범위
+일일히 직접 계산한다.
+sqrt(N) <= 10^6 이므로 충분히 계산할 수 있다.
+
+2) i > sqrt(N) 인 범위
+floor(N/i) 가 같은 값을 가지는 범위를 한번에 처리할 것이다.
+구체적으로 k = floor(N/i) 라고 하면
+k <= N/i < k+1
+따라서  N/(k+1) < i <= N/k  가 되므로, 같은 값을 가지는 i의 범위가 나온다.
+그리고 i > sqrt(N) 이므로 k <= N/i < sqrt(N) 이다.
+k를 충분히 다 돌려볼 수 있다.
+
+참고로 문제에 주어진 알고리즘은
+Minsky 의 register machine 을 흉내낸 것 이라고 한다.
