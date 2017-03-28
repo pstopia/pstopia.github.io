@@ -7,3 +7,14 @@ prob_link: 'http://codeforces.com/contest/142/problem/A'
 gist: b2afd4f0bbc1687a25aee32eea057d8f
 tags: [math, brute force]
 ---
+N = x * y * z  (x <= y <= z) 로 나타낼 수 있다.
+가능한 x, y, z 를 하나 찾았다고 하면
+이 각각의 x, y, z 가 A-1, B-2, C-2 와 매칭되는 3!의 경우의 수를 따져서
+그 때마다 A*B*C 의 최대/최소를 갱신해주면 된다.
+
+가능한 x, y, z 순서쌍은
+x * x * x <= N  &&  N % x == 0
+x * y * y <= N  &&  (N / x) % y == 0
+을 만족하는 x, y를 전부 찾으면 된다.
+N의 약수의 개수에 비례하는 시간이 걸리기 때문에
+전부 찾는데 걸리는 시간이 얼마 되지 않는다.

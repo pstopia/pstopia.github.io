@@ -7,3 +7,21 @@ prob_link: 'http://codeforces.com/contest/142/problem/D'
 gist: 315c006c4287de869223ca5bfe582a9c
 tags: [game theory]
 ---
+retreat 이 없는 상황을 먼저 생각해보자.
+
+어떤 줄에서 R와 G 사이에 공간이 x칸이 있다고 하면
+그 줄은 돌이 x개 있는 pile이 1개인 nim game 과 대응된다.
+attack을 하는 것은 돌무더기에서 돌을 적당히 가져오는 것이라 할 수 있다.
+따라서 승패는 index-k nim game 을 풀면 알 수 있다.
+
+이제 retreat 을 할 수 있다고 해보자.
+retreat 이 없는 버전에서 승자로 결정된 사람은
+그 전략을 그대로 따라가도 이길 수 있다.
+retreat 은 위에서 패자로 결정된 사람만이 할 수 있는 행동인 것이다.
+
+하지만 그 패자가 retreat을 해도
+승자는 게임의 상태를 원래대로 되돌릴 수 있기 때문에
+(retreat 한 만큼 그대로 attack 하면 됨)
+retreat은 위에서 결정한 승패에 영향을 끼칠 수 없다.
+
+그 외에 자잘한 예외도 조심해서 잘 처리해야 한다.
