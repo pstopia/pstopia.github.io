@@ -1,0 +1,77 @@
+---
+layout: solution
+round_name: Topcoder SRM 514 Div1
+prob_name: '[Hard] MagicalGirlLevelThreeDivOne'
+title: '[Hard] MagicalGirlLevelThreeDivOne - Topcoder SRM 514 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11478'
+gist: 8b8e09de1e561bab597a1bba579fda1d
+tags: [dp, divide and conquer]
+---
+n >= K 이면 A[n] = A[n-1] + A[n-1-K] + ...  이므로
+A[n]은 A[n-1]을 prefix로 가진다.
+A[n-1]은 A[n-2]를 prefix로 가진다. A[n-2]는 A[n-3]을 prefix로 가진다.
+...
+따라서 K <= i < n 인 i에 대해 A[n]은 항상 A[i]를 prefix로 가진다.
+만약 주어진 hi가 A[n-1]의 길이보다 작다면
+A[n]을 살펴볼 것이 아니라 A[n-1]을 살펴봐도 된다는 뜻이다.
+이를 통해 실제로 살펴봐야할 n을 줄일 수 있다.
+
+A[n]의 길이는 지수적으로 증가하기 때문에 문제에서 주어진 제한은 n <= 10^9 이지만
+실제로 살펴봐야 할 n의 범위는 매우 작다는 것을 관찰할 수 있다.
+hi <= 10^15 이므로
+A[n]의 길이가 처음으로 10^15를 넘을 때의 n이 우리가 살펴봐야할 n의 상한이다.
+A[n]의 길이가 가장 짧아지는 최악의 경우는
+first = { "1", "1", ..., "1" }  ("1" 이 50개)  인 경우일 것이다.
+이 때 A[n]의 길이를 간단한 dp 로 구해보면
+n <= 624 인 범위만 유효하다는 것을 알 수 있다.
+
+n >= 2K 라면 A[n-K] = A[n-1-K] + A[n-1-2K] + ... 이므로
+A[n] = A[n-1] + A[n-K] 로 바꿔 쓸 수 있다.
+즉, A[n]은 A[n-1]과 A[n-K] 두 부분으로 딱 나눌 수 있다.
+이 사실을 잘 유념해두자.
+
+solve(n, lo, hi) 라는 함수를 정의하자.
+이 함수는 A[n][lo..hi] 에 있는 연속된 1의 구간에 대한 정보를 반환한다.
+구체적으로 다음 4가지 값을 반환한다.
+- 연속된 1의 구간 중 가장 긴 것의 길이
+- prefix 이면서 연속된 1의 구간 중 가장 긴 것의 길이
+- suffix 이면서 연속된 1의 구간 중 가장 긴 것의 길이
+- 구간 전체가 1인지 여부
+
+1) n < 2K  라면
+A[n][lo..hi] 를 직접 순회하면서
+구간에 대한 정보를 직접 계산하여 반환
+
+2) len(A[n-1]) <= lo  라면
+[lo..hi] 구간이 전부 A[n-K] 부분에 위치해있으므로
+solve(n-K, lo-len(A[n-1]), hi-len(A[n-1])) 을 반환하면 된다.
+
+3) hi < len(A[n-1])  이라면
+[lo..hi] 구간이 전부 A[n-1] 부분에 위치해있으므로
+solve(n-1, lo, hi) 를 반환하면 된다.
+
+4) 그 외의 경우
+[lo..hi] 구간은 A[n-1]과 A[n-K] 두 부분에 걸쳐있다.
+우선 구간을 분할하고 각각 해결한다
+v1 = solve(n-1, lo, len(A[n-1])-1)
+v2 = solve(n-K, 0, hi - len(A[n-1]))
+그리고 v1과 v2를 적절히 합쳐서 반환하면 된다.
+
+원래 문제를 해결하기 위해 solve(N, LO, HI) 를 부르면
+그 때 시간복잡도는 어떻게 될까? 경우를 나눠 따져보자.
+
+- [lo..hi] 가 A[n]의 전부인 경우
+이런 경우는 DP처럼 생각해서 값을 memoization 해놓으면 된다.
+D[n] = merge(D[n-1], D[n-K]) 꼴이 될 것이다.
+결국 D[n]을 구하는건 O(1)에 가능.
+
+- [lo..hi] 가 A[n]의 prefix/suffix인 경우
+[lo..hi] 가 prefix/suffix인 경우는
+특정 n에 대해 딱 한 번만 만나게 된다.
+(4번 케이스에서 구간이 분할되는 모습을 생각해보면 됨)
+따라서 이경우도 O(1)에 가능하다 할 수 있다.
+
+- [lo..hi] 가 A[n]에 완전히 포함되는 경우
+이 경우는 맨 처음 부르는 solve만 해당된다.
+
+따라서 전체 시간복잡도는 O(n) 이다.
