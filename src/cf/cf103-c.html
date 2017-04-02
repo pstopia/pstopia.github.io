@@ -7,3 +7,17 @@ prob_link: 'http://codeforces.com/contest/144/problem/C'
 gist: 61d8c957acaa357e033bcc8d927117b8
 tags: [greedy]
 ---
+anagram 인지를 확인하면 되므로
+문자열 매칭을 할 필요는 없고, 알파벳 별 개수만 갖고 확인할 수 있다.
+
+sliding window 로
+문자열p를 문자열s의 처음부터 대조하면서 오른쪽으로 나아가면 된다.
+현재 s_i = s[i..i+|p|-1] 을 대조하고 있다고 했을 때
+count(p, c) > count(s_i, c) 인 알파벳 c가 존재한다면
+그 부분은 anagram이 될 가능성이 없는 것이다.
+만약 이렇지 않다면 '?'를 적절히 치환하여 anagram으로 항상 만들 수 있다.
+
+window를 오른쪽으로 한칸 옮길 때
+count 함수를 일일히 갱신하는 것이 아니라
+방금 window에서 빠지게 된 문자, 방금 window로 들어오게 된 문자
+두가지만 +-1 을 해주면 된다.
