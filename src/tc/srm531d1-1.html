@@ -1,0 +1,31 @@
+---
+layout: solution
+round_name: 'Topcoder SRM 531 Div1'
+prob_name: '[Easy] NoRepeatPlaylist'
+title: '[Easy] NoRepeatPlaylist - Topcoder SRM 531 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11774'
+gist: 266b943ace06c6dd606ec2a6f0b3dc91
+tags: [dp, combinatorics]
+---
+문제를 명확히 정리하면 다음과 같다.
+다음과 같은 조건을 만족하는 길이 P인 수열 A의 경우의 수를 구하라.
+- 1~N 사이의 수가 각각 한번 이상은 들어가야 한다.
+- A[i] == A[j] 라면 |i - j| > M 이어야 한다.
+
+두번째 조건을 다르게 해석하면
+모든 구간 [i, i+M-1] 에 대해
+이 안에 포함된 수가 서로 다 달라야 한다는 뜻임을 알 수 있다.
+
+지금까지 사용한 수의 종류의 수를 차원으로 추가한 DP를 생각해볼 수 있다.
+D[i][j] = i종류의 수를 사용하여 길이 j인 수열을 만드는 경우의 수
+        =   D[i-1][j-1] * (N-(i-1))
+		  + D[i][j-1] * max(i-M, 0)
+D[0][0] = 1
+
+첫번째 항은 i-1종류의 수를 사용하던 경우에서 새로운 수를 맨 뒤에 추가하는 경우이다.
+아예 새로운 수를 추가하는 것이니 그냥 마음대로 추가해도 된다.
+추가할 수 있는 후보는 N-(i-1) 개 중 한가지.
+
+두번째 항은 앞에서 썼던 수를 맨 뒤에 추가하는 경우이다.
+따라서 추가하려는 수가 [j-M, j-1] 에서 쓰이지 말았어야 한다.
+그것을 만족하면서 고를 수 있는 후보는 i-M 개 중 한가지.
