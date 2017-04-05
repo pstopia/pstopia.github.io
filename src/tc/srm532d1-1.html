@@ -1,0 +1,19 @@
+---
+layout: solution
+round_name: 'Topcoder SRM 532 Div1'
+prob_name: '[Easy] DengklekMakingChains'
+title: '[Easy] DengklekMakingChains - Topcoder SRM 532 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11754'
+gist: 78f7b784d5d97409ab07ee408d569fb2
+tags: [brute force]
+---
+.이 없이 3자리 모두 숫자로 되어있는 체인은
+무조건 가운데 몰아넣을 수 있어서 꼭 포함하는 것이 이득이다.
+가운데에 몰아넣을 체인의 값의 합을 미리 구해놓고
+이 체인의 양쪽에 붙일 체인을 고르는 모든 경우를 순회하면 된다.
+
+몇가지 주의해야 할 예외들이 있는데
+-  왼쪽/오른쪽에 각각 아무것도 붙지 않을 수도 있다.
+-  왼쪽에 붙인 체인은 오른쪽에 쓸 수 없다. (반대도 마찬가지)
+-  .X.  같은 체인은 왼쪽/오른쪽에 붙일 수 없지만
+   그 자체로 쓰일 수 있으므로 고려해줘야 한다.
