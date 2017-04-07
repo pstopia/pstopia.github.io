@@ -1,0 +1,17 @@
+---
+layout: solution
+round_name: 'Topcoder SRM 533 Div1'
+prob_name: '[Easy] CasketOfStar'
+title: '[Easy] CasketOfStar - Topcoder SRM 533 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11781'
+gist: 2675360427347c7285127dad5e47965c
+tags: [dp]
+---
+간단한 O(n^3) DP
+
+D[i][j]
+= weight[i]를 왼쪽 끝, weight[j]를 오른쪽 끝으로 삼고
+  내부의 모든 별들을 없앴을 때 얻을 수 있는 에너지 합의 최대
+= max( D[i][k] + D[k][j] + weight[i]*weight[j]  ,  i < k < j )
+
+답은 D[0][n-1]
