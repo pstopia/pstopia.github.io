@@ -5,5 +5,28 @@ prob_name: '[Medium] MagicBoard'
 title: '[Medium] MagicBoard - Topcoder SRM 533 Div1'
 prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11780'
 gist: bcb2fb21531c5f8f1c22d303c20cad27
-tags: [graph, euler path]
+tags: [graph, eulerian path]
 ---
+행과 열을 각각 하나의 정점으로 만들고
+(i, j) 에 diamond가 있으면 행i 와 열j 사이에 간선을 이어주면
+이분그래프가 만들어진다.
+원래 문제의 답은
+이렇게 만든 이분그래프에 eulerian path 가 있는지 와 동치이다.
+- 모든 diamond를 정확히 한 번씩 방문해야 한다
+  -> 이분그래프에서 모든 간선을 정확히 한 번씩 방문해야 한다
+- i가 짝수라면 S[i]와 S[i+1]은 같은 행에 위치해야 한다
+  -> i가 짝수라면 경로상의 i번째 간선과 i+1번째 간선은
+     같은 행 정점에서 만나야 한다
+- i가 홀수라면 S[i]와 S[i+1]은 같은 열에 위치해야 한다
+  -> i가 홀수라면 경로상의 i번째 간선과 i+1번째 간선은
+     같은 열 정점에서 만나야 한다
+
+eulerian path 가 존재하는지는 다음과 같이 확인할 수 있다.
+- 이분그래프는 하나의 연결 컴포넌트로 이루어져야 한다.
+- 차수가 홀수인 정점이 0개 혹은 2개여야 한다.
+
+한가지 예외가 있는데
+eulerian path 의 시작점은 무조건 열 정점이어야 한다.
+(S[0]과 S[1]은 같은 행에 위치해야 하므로)
+따라서 만약 차수가 홀수인 정점이 2개라면
+그 중 하나는 반드시 열 정점이어야 한다.
