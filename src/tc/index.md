@@ -42,3 +42,4 @@ comments: false
 |SRM 531 Div1    |[Easy]({{ site.baseurl }}/src/tc/srm531d1-1/)|[Medium]({{ site.baseurl }}/src/tc/srm531d1-2/)| |
 |SRM 532 Div1    |[Easy]({{ site.baseurl }}/src/tc/srm532d1-1/)|[Medium]({{ site.baseurl }}/src/tc/srm532d1-2/)| |
 |SRM 533 Div1    |[Easy]({{ site.baseurl }}/src/tc/srm533d1-1/)|[Medium]({{ site.baseurl }}/src/tc/srm533d1-2/)| |
+|SRM 534 Div1    |[Easy]({{ site.baseurl }}/src/tc/srm534d1-1/)|[Medium]({{ site.baseurl }}/src/tc/srm534d1-2/)| |

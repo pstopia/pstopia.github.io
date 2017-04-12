@@ -1,0 +1,25 @@
+---
+layout: solution
+round_name: 'Topcoder SRM 534 Div1'
+prob_name: '[Easy] EllysCheckers'
+title: '[Easy] EllysCheckers - Topcoder SRM 534 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11791'
+gist: 66c0a213e246c9dc9520c60b8ea4e030
+tags: [greedy, dp]
+---
+D = sum( 'o'와 맨오른쪽 셀 사이의 거리  ,  for all 'o' )
+라고 하자.
+
+플레이어가 할 수 있는 2가지 행동은
+모두 D의 parity를 바꾼다.
+
+1. 'o'를 한칸 오른쪽으로 이동
+ -> 자명하게 D의 parity를 바꾼다.
+2. 'o'를 세칸 오른쪽으로 점프. 사이에 두개의 'o'가 차있어야 함.
+ -> 이것도 역시 D의 parity를 바꾸게 된다. 빠지는 값이 홀수(3)이기 때문이다.
+
+맨 마지막에 'o'가 모두 없어지는 상황에서의 D의 parity는 0 이다.
+이 상황을 받게 되는 사람은 지는 것이 된다.
+
+따라서 맨 처음 상황에서의 D의 parity가 1이면 선수는 필승,
+0이면 선수는 필패이다.
