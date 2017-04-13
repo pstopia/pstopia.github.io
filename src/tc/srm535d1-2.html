@@ -7,3 +7,26 @@ prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11454'
 gist: a7721348aae62a31e03339e74edaf2a6
 tags: [math, binary search]
 ---
+n명의 작업자 중 미리 K명을 뽑은 상태라고 가정하자.
+
+한사람 당 일하는 시간을 T라고 하면
+Work = sum(T*a[i])  이고
+Cost = sum(T*a[i]*p[i]) + 3600*T*K
+     = ( sum(a[i]*p[i]) + 3600*K ) * ( Work/sum(a[i]) )
+
+우리는 이 Cost를 최소화하는 것에 관심이 있다.
+
+다음과 같은 결정 문제를 생각해보자
+'Cost를 G 이하로 만들 수 있는가?'
+만약 G 이하로 만들 수 있다면 G보다 큰 값 이하로도 만들 수 있다.
+따라서 최소의 G를 이분검색을 찾을 수 있고, 이건 최소의 Cost가 된다.
+
+결정문제를 수식으로 풀어보면
+G >= ( sum(a[i]*p[i]) + 3600*K ) * ( Work/sum(a[i]) )
+Work*sum(a[i]*p[i]) - G*sum(a[i]) + 3600*Work*K <= 0
+sum(Work*a[i]*p[i] - G*a[i]) + 3600*Work*K <= 0  이 된다.
+
+이제 다시 N명의 작업자가 있는 문제로 돌아가서
+위의 부등식을 최대한 만족시키려면
+Work*a[i]*p[i] - G*a[i] 가 작은 순으로 K명을 뽑는 것이 제일 좋다.
+이렇게 뽑은 K명으로 저 부등식이 만족하는지 확인하면 된다.
