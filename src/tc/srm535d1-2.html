@@ -22,7 +22,7 @@ Cost = sum(T*a[i]*p[i]) + 3600*T*K
 따라서 최소의 G를 이분검색을 찾을 수 있고, 이건 최소의 Cost가 된다.
 
 결정문제를 수식으로 풀어보면
-G >= ( sum(a[i]*p[i]) + 3600*K ) * ( Work/sum(a[i]) )
+( sum(a[i]*p[i]) + 3600*K ) * ( Work/sum(a[i]) ) <= G
 Work*sum(a[i]*p[i]) - G*sum(a[i]) + 3600*Work*K <= 0
 sum(Work*a[i]*p[i] - G*a[i]) + 3600*Work*K <= 0  이 된다.
 
