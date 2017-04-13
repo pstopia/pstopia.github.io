@@ -7,3 +7,11 @@ prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11364'
 gist: 3b2bb7c3568b6d66d5cd7b60dbdd83fd
 tags: [math, brute force]
 ---
+A = a*G , B = b*G  로 나타내면 (a, b 는 서로소인 자연수)
+L = a*b*G
+따라서 L/G = a*b  이다.
+
+a <= b 라고 하면  (일반성을 잃지 않음)
+L/G <= 10^12 이므로  a <= 10^6 이다.
+따라서 a를 저 범위에서 하나씩 결정해보면서
+그에 맞는 b가 존재하는지 확인한 후 답을 갱신하면 된다.
