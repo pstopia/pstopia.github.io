@@ -1,0 +1,23 @@
+---
+layout: solution
+round_name: 'Topcoder SRM 537 Div1'
+prob_name: '[Easy] KingXNewCurrency'
+title: '[Easy] KingXNewCurrency - Topcoder SRM 537 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11817'
+gist: 6d8073274aca6636e6b622b57743ad36
+tags: [math, brute force]
+---
+동전X와 동전Y를 잘 조합해서 A원과 B원을 만들 수 있으면
+동전A와 동전B를 조합해서 나오는 모든 가격을
+동전X와 동전Y로도 만들 수 있다.
+
+우선 A % X == 0 && B % X == 0 이면 이것이 반드시 가능하므로
+무한히 많은 Y가 존재한다.
+
+그게 아니라면 Y를 brute force로 결정하고
+위의 사실을 확인하면 된다.
+가능한 Y의 범위는 max(A, B) 이하 이다.
+
+Xn + Ym = A  가 되는 음이아닌 정수 n, m 가 존재하는지
+Xp + Yq = B  가 되는 음이아닌 정수 p, q 가 존재하는지
+를 다양한 방법으로 확인하면 된다.

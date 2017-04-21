@@ -1,0 +1,37 @@
+---
+layout: solution
+round_name: 'Topcoder SRM 537 Div1'
+prob_name: '[Medium] KingXMagicSpells'
+title: '[Medium] KingXMagicSpells - Topcoder SRM 537 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11822'
+gist: 1e792c8936e23c0903ca7c395cb3eb43
+tags: [dp]
+---
+우선 다음과 같은 기대값DP를 바로 생각해볼 수 있다.
+
+D[k][i]
+= k번 스펠을 사용했을 때, i번 자리에 위치할 오리의 수의 기대값
+= 0.5 * (spellOne[i] ^ D[k-1][i]) + 0.5 * D[k-1][spellTwoInverse[i]]
+
+여기서 문제가 되는 것은 바로 xor 이다.
+실수의 xor 을 어떻게 계산할 수 있을까? 노답이다.
+
+xor은 비트별로 계산할 수 있다는 사실에 착안해서
+저 DP를 비트별로 돌린다는 생각을 할 수 있다.
+
+만약 정의역이 0, 1 로 한정된다면
+0 ^ x = x
+1 ^ x = 1 - x
+로 치환할 수 있다.
+따라서 아래와 같이 계산 가능한 DP식을 세울 수 있다.
+
+D[0][i] = ducks[i]
+D[k][i] =
+  if spellOne[i] == 0:
+    0.5 * (D[k-1][i]) + 0.5 * D[k-1][spellTwoInverse[i]]
+  if spellOne[i] == 1:
+    0.5 * (1-D[k-1][i]) + 0.5 * D[k-1][spellTwoInverse[i]]
+
+(ducks[i] 와 spellOne[i] 는 0, 1 중 하나를 갖는 값이다.)
+
+답에는 D[K][0] * 2^(비트위치)  만큼 반영될 것이다.
