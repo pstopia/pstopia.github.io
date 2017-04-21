@@ -1,0 +1,52 @@
+---
+layout: solution
+round_name: 'Topcoder SRM 536 Div1'
+prob_name: '[Medium] RollingDiceDivOne'
+title: '[Medium] RollingDiceDivOne - Topcoder SRM 536 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11797'
+gist: 66d2bfdfc13e1609cf9ea6b312f26bbe
+tags: [greedy]
+---
+우선 풀이를 편하게 하기 위해 dice[i] 를 0-based 로 만들어놓고 시작하자.
+나중에 답에 n을 더하면 된다.
+
+주사위를 적당히 던진 시점에서
+나올 수 있는 합의 빈도수를 그래프로 그려보면
+정규분포와 대충 비슷한 모양의 그래프가 나온다.
+이런 그래프에서는 최대값을 가지는 지점이 하나일 수도 있고 여러개일 수도 있다.
+
+이 상태에서 주사위를 하나 더 던지면 그래프의 모양이 변한다.
+다음 그래프는 구체적으로 아래와 같이 만들어진다.
+graph[i][x] = sum( graph[i-1][x-k]  ,  1 <= k <= dice[i] )
+
+현재 dice[1] ~ dice[i-1] 을 던졌고
+지금 최대값이 나타나는 구간의 길이를 L 이라고 해보자.
+다음 던지는 주사위 dice[i]에 따라 이 구간의 모양이 변하는 것을 관찰해보자.
+
+1) dice[i] <= L
+
+구간이 주사위범위를 완전히 포함하므로
+이 구간에 속하는 값들을 온전히 더하는 부분에서
+다음 최대값이 만들어질 것이다.
+다음에 생기는 최대 구간의 길이는 L - dice[i]
+
+2) L < dice[i] <= dice[1] + dice[2] + ... + dice[i-1]
+
+구간의 길이보다 주사위의 범위가 더 길다.
+그래프가 볼록하기 때문에
+다음 최대값은 1개 혹은 2개가 될 것이다.
+다음에 생기는 최대 구간의 길이는 (dice[i] - L) % 2
+
+3) dice[1] + dice[2] + ... + dice[i-1] < dice[i]
+
+지금까지 나온 주사위를 더한 값보다 더 큰 주사위가 나타난 상황이다.
+현재 그래프의 모든 값을 온전히 다 더하는 부분에서
+다음 최대값이 만들어질 것이다.
+다음에 생기는 최대 구간의 길이는
+dice[i] - (dice[1] + dice[2] + ... + dice[i-1])
+
+이 과정을 시뮬레이션해서 최종적인 최대 구간의 길이를 구하고
+그것을 이용해 최대인 지점 중 가장 왼쪽에 있는 지점을 답으로 하면 된다.
+
+위의 과정을 단순화하면
+답은 min( floor(sum/2), sum - (max dice) )  가 된다고 한다......
