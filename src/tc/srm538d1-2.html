@@ -1,0 +1,26 @@
+---
+layout: solution
+round_name: 'Topcoder SRM 538 Div1'
+prob_name: '[Medium] TurtleSpy'
+title: '[Medium] TurtleSpy - Topcoder SRM 538 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11704'
+gist: 8dad12e34966e5b3131f645a3da9a2e5
+tags: [geometry, dp]
+---
+우리는 우리가 원하는 rotate 명령만 수행하도록 할 수 있다.
+원하지 않는 rotate 명령을 맨 마지막에 몰아서 하면
+결과가 바뀌지 않기 때문이다.
+
+backward 명령이 하나도 없다면
+먼저 forward 명령을 모두 수행해서 최대한 진행한 후
+남은 rotate 명령을 수행하면 된다.
+
+backward 명령이 존재하면 어떻게 해야할까?
+먼저 forward 명령으로 최대한 진행한 뒤에
+backward 명령을 수행할 때 원점과 최대한 멀리 떨어질 수 있도록
+rotate 명령을 적절히 선택하여 180도에 최대한 가깝게 회전한 후
+남은 backward 명령을 한번에 수행하면 될 것이다.
+
+결국 주어진 rotate 명령들 중에 일부를 적절하게 골라
+180도에 최대한 가깝게 회전하는 것이 문제의 목표이고
+이것은 DP로 쉽게 계산할 수 있다.

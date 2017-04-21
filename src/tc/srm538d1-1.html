@@ -1,0 +1,20 @@
+---
+layout: solution
+round_name: 'Topcoder SRM 538 Div1'
+prob_name: '[Easy] EvenRoute'
+title: '[Easy] EvenRoute - Topcoder SRM 538 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11808'
+gist: a12282f254afdf5b426e7676c328b3a8
+tags: [math]
+---
+마지막으로 방문한 지점을 (x, y) 라고 하자.
+(0, 0)에서 여행을 시작해서 여기저기 막 떠돌다가
+(x, y)에 도착한 것인데
+이 여행경로가 어떻게 생기든 상관없이 스텝의 수의 parity는 일정하다.
+(0, 0) -> (x, y) 로 가는 경로를 아무거나 하나 잡고
+얘를 적당히 변형시켜 모든 경로를 만들어낼 수 있는데
+변형시킬 때 마다 parity가 유지되기 때문이다.
+
+따라서 마지막으로 방문할 지점 (x, y) 를 결정하면
+그 곳까지 가는 여행의 스텝의 수의 parity 는 |x+y| 의 parity 와 같다.
+wantedParity 와 같은 것이 있는지 확인하면 된다.
