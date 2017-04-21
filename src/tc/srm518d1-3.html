@@ -1,0 +1,67 @@
+---
+layout: solution
+round_name: 'Topcoder SRM 518 Div1'
+prob_name: '[Hard] Nim'
+title: '[Hard] Nim - Topcoder SRM 518 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11469'
+gist: efedca4f7c36fc9127749e6cc05e9b72
+tags: [combinatorics, divide and conquer, fft]
+---
+Nim game 의 필승 조건을 따져보면
+문제를 다음과 같이 바꿔쓸 수 있다.
+
+-  1 <= a[i] <= L
+-  a[i] is a prime number
+-  a[1] ^ a[2] ^ ... ^ a[K] = 0
+을 만족하는 수열 a의 경우의 수를 구하시오.
+
+느린 방법을 먼저 생각해보고 그걸 개선해보자.
+
+A[1][i] = 수열 길이가 1이면서 xor한 값이 i인 경우의 수
+        = (i is a prime) ? 1 : 0
+A[2][i] = 수열 길이가 2면서 xor한 값이 i인 경우의 수
+        = sum( A[1][k] * A[1][i^k] )
+A[3][i] = 수열 길이가 3이면서 xor한 값이 i인 경우의 수
+        = sum( A[2][k] * A[1][i^k] )
+...
+이런 식으로 A[K] 를 계산하면 A[K][0] 이 답이 된다.
+
+저 식의 꼴이 뭔가 convolution 과 닮았으므로
+연산자를 정의해서 정리해보자.
+(A[p] $ A[q])[i] = sum( A[p][k] * A[q][i^k] ) 라고 정의하면
+A[2] = A[1] $ A[1]
+A[3] = A[2] $ A[1] = A[1] $ A[1] $ A[1]
+... 이 된다.
+따라서 A[K] = A[1] $ A[1] $ ... $ A[1] (K번)  이다.
+
+이 연산을 빠르게 계산하려면 DFT의 아이디어가 필요하다.
+
+길이 N인 수열을 길이 N인 수열로 변환하는 tf() 와 그의 역변환인 itf() 가
+수열 X, Y 에 대해
+tf(X $ Y)[i] = tf(X)[i] * tf(Y)[i]  를 만족한다고 해보자.
+이걸 A[K] 에 그대로 적용하면
+tf(A[K])[i] = tf(A[1])[i]^K  가 되고
+여기에 역변환을 적용하면 우리가 원하는 답을 구할 수 있다.
+
+이제 문제는
+이러한 변환/역변환을 찾을 수 있는지
+그리고 그 계산을 빠르게 할 수 있는지 가 된다.
+방법이 2가지 정도 있는데 2가지 모두 소개해보겠다.
+
+첫번째 방법은 직접 변환을 찾는 방법이다.
+
+수열 X 를 반으로 나눈 부분이 X1과 X2 라고 하면
+tf(X) = tf(X1, X2) = ( tf(X1) - tf(X2), tf(X1) + tf(X2) )
+위와 같은 변환은 조건을 만족하는 변환이다.
+( +, - 연산은 수열 원소 각각에 대해 덧/뺄셈을 수행하는 연산 )
+항상 절반으로 자르면서 변환을 하기 때문에
+변환하는데 총 O(nlogn) 시간이 걸린다.
+
+두번째 방법은 그냥 DFT를 하는 방법이다.
+
+xor은 각 비트별로 보면 Z2 field 이다.
+따라서 위의 $ 연산은 multidimensional convolution 이 된다.
+그래서 tf() 는 그냥 multidemensional DFT 가 되고
+구현할 때는 fft를 각 차원마다 해주면 된다.
+
+DFT말고도 카라츠바를 응용한 분할정복으로도 해결할 수 있다고 한다.
