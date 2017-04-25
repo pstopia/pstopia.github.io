@@ -1,0 +1,30 @@
+---
+layout: solution
+round_name: 'Topcoder SRM 539 Div1'
+prob_name: '[Medium] SafeReturn'
+title: '[Medium] SafeReturn - Topcoder SRM 539 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11805'
+gist: 414f82deb92571112b8d0fae1a0b98b7
+tags: [graph, bipartite matching]
+---
+floyd 나 dijkstra 따위로 모든 location 쌍 마다 최단거리를 구해놓자.
+이것을 dist[][] 라고 하자.
+
+i번 솔져가 j번 솔져와 같은 길을 걸어가기 위한 조건은 무엇일까?
+바로
+dist[0][i] + dist[i][j] == dist[0][j]  이다.
+j도 자신의 목적지까지 최단거리를 통해 이동해야하기 때문에
+위의 조건이 만족해야 i번 솔져와 j번 솔져가 같이 갈 수 있게 된다.
+
+맨 처음에 N명의 솔져가 모두 혼자 다니기로 한 상태이다.
+이제 위의 관계를 만족하는 i, j 를 하나 찾아서
+이 둘이 같이 다니게 만들면
+i번 솔져는 혼자 다니지 않음이 보장된다.
+따라서 혼자 다니는 솔져의 수가 하나 줄어든다.
+
+위의 관계를 만족하는 쌍을 계속 찾아서 같이 다니게 만들면
+혼자 다니는 솔져의 수를 계속 하나씩 줄일 수 있다.
+
+따라서 이 문제는
+위의 관계를 만족하는 쌍을 최대한 많이 찾는 문제로 바뀌고
+이것은 최대이분매칭이다.

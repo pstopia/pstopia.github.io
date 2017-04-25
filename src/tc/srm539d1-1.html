@@ -1,0 +1,17 @@
+---
+layout: solution
+round_name: 'Topcoder SRM 539 Div1'
+prob_name: '[Easy] Over9000Rocks'
+title: '[Easy] Over9000Rocks - Topcoder SRM 539 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11855'
+gist: 6b29f354c096b30ac63a1794e2f2a0f3
+tags: [brute force]
+---
+상자가 15개 이하이므로
+상자들의 가능한 부분집합을 모두 살펴볼 수 있다.
+부분집합에 속하는 상자들의 lower 와 upper 를 모아 더하면
+그 부분집합이 만드는 돌 개수의 최소와 최대가 나온다.
+
+부분집합마다 돌 개수의 범위를 구간으로 만들고 정렬해둔다.
+앞에서부터 sweep 하면서 구간으로 덮인 좌표의 개수를 세어주면 된다.
+9000을 넘는 좌표만 세어야 한다는 것을 주의하자.
