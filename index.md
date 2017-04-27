@@ -20,5 +20,6 @@ title: Home
     * [SCC (Kosaraju)]({{ site.baseurl }}/notes/graph/scc-kosaraju/)
     * [BCC, Cut vertex, Bridge]({{ site.baseurl }}/notes/graph/bcc/)
     * [Maximum Flow (Dinic)]({{ site.baseurl }}/notes/graph/maxflow-dinic/)
+    * [Maximum Flow with Edge Demands]({{ site.baseurl }}/notes/graph/maxflow-with-edge-demands/)
   * Math
     * [Fast Fourier Transform]({{ site.baseurl }}/notes/math/fft/)
