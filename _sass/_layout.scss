@@ -8,6 +8,7 @@
   padding-right: 1.5rem;
   margin-left:  auto;
   margin-right: auto;
+  position: relative;
 }
 
 footer {
@@ -22,6 +23,27 @@ footer {
 .license img {
   display: inline;
   margin: 0;
+}
+
+.ad-rightside-container {
+  display: none;
+
+  @media (min-width: 61em) {
+    display: block;
+    position: absolute;
+    left: 654px;
+    top: 215px;
+  }
+}
+
+.ad-rightside {
+  display: none;
+
+  @media (min-width: 61em) {
+    display: inline-block;
+    width: 160px;
+    height: 600px;
+  }
 }
 
 .ad-footer-container {
