@@ -64,11 +64,11 @@ footer {
   width: 320px;
   height: 100px;
 
-  @media (min-width: $large-breakpoint) {
+  @media (min-width: 480px) {
     width: 468px;
     height: 60px;
   }
-  @media (min-width: 46em) {
+  @media (min-width: 740px) {
     width: 728px;
     height: 90px;
   }
