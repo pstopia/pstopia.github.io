@@ -1,0 +1,16 @@
+---
+layout: solution
+round_name: 'Topcoder SRM 541 Div1'
+prob_name: '[Easy] AntsMeet'
+title: '[Easy] AntsMeet - Topcoder SRM 541 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11887'
+gist: 39438a7c108c5056cd8172ee7c056678
+tags: [greedy, implementation]
+---
+모든 (i, j) 쌍을 돌면서
+개미i와 개미j가 충돌하는지 확인하고, 충돌한다면 그 충돌시각을 계산한다.
+충돌시각이 제일 빠른 쌍을 골라 그 개미들을 지워버린다.
+제일 빠른 쌍이 여러 쌍이라면 그 쌍들을 한번에 다 지워야 한다.
+이 과정을 개미가 한마리도 남지 않을 때
+혹은 아무도 충돌하지 않을 때까지 반복한다.
+위 과정은 많아야 N번 반복되므로 전체 시간복잡도는 O(N^3)
