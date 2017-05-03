@@ -1,0 +1,19 @@
+---
+layout: solution
+round_name: 'Topcoder SRM 540 Div1'
+prob_name: '[Easy] ImportantSequence'
+title: '[Easy] ImportantSequence - Topcoder SRM 540 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11842'
+gist: bd67d90f4ebe9ba4fc4e8e1bf58776c2
+tags: [math]
+---
+operators[] 에 의해
+a[i] + a[i+1] = C  혹은  a[i] - a[i+1] = C  가 나오는데
+이걸 전부 잘 연립해서 a[i] 를 a[0] 에 대한 식으로 나타낼 수 있다.
+구체적으로
+a[i] = a[0] + X  혹은  a[i] = -a[0] + X  꼴이 된다.
+
+모든 i에 대해 a[i] > 0 이어야 하므로
+모든 부등식에 위 식을 대입해서 풀고
+그 부등식들의 교집합을 구하면 a[0] 의 범위가 나온다.
+이 범위를 만족하는 a[0] 의 가짓수가 답이 된다.
