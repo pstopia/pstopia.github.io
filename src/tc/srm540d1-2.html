@@ -7,3 +7,37 @@ prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11840'
 gist: fae954308d983f9a18f2d78a9255a8de
 tags: [dp, probability]
 ---
+느리지만 확실한 방법을 먼저 생각해보자.
+다음과 같은 DP를 떠올릴 수 있다.
+
+D[i][r][g][b]
+= i번 기둥에 (r, g, b)를 칠했을 때,
+  앞으로 i+1번~N-1번 기둥을 적절히 칠해서 good fence가 될 확률
+= sum( D[i+1][x][y][z] ) / count( (x, y, z) )
+  (x, y, z) : (r, g, b) 에서 transition 가능한 모든 색들
+
+D[N-1][a][b][c] = 1
+    if transition (a, b, c) -> (startR, startG, startB) is available
+
+이 DP를 단순하게 그냥 계산하려고 하면
+계산량이 40 * 50^6 이므로 제한시간을 초과하게 된다.
+
+색 (r, g, b) 에서 transition 할 수 있는 색들이
+어떤 식으로 구성되어있는지 관찰이 필요하다.
+
+(r, g, b) 를 3차원 공간에 놓인 점이라고 생각해보자.
+transition (r, g, b) -> (x, y, z) 이 가능할 조건은 다음과 같다.
+|r-x| <= d2 && |g-y| <= d2 && |b-z| <= d2
+  && !(|r-x| < d1 && |g-y| < d1 && |b-z| < d1)
+
+점 (r, g, b)가 주어졌을 때
+|r-x| <= D && |g-y| <= D && |b-z| <= D
+를 만족하는 점 (x, y, z)의 집합을 생각해보면
+3차원 공간에서 정육면체로 나타날 것이다.
+따라서 transition (r, g, b) -> (x, y, z) 이 가능한 점 (x, y, z)의 집합은
+한 변의 길이가 2*d2인 정육면체의 내부에
+한 변의 길이가 2*(d1-1)인 정육면체가 구멍이 뚫린 형태일 것이다.
+
+정육면체 모양의 집합에 대해 합을 구하는 것은
+3차원 prefix sum 을 구해놓으면 O(1) 에 계산할 수 있고
+이를 이용하면 위 DP를 시간내에 계산할 수 있다.
