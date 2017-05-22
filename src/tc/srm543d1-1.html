@@ -1,0 +1,32 @@
+---
+layout: solution
+round_name: 'Topcoder SRM 543 Div1'
+prob_name: '[Easy] EllysXors'
+title: '[Easy] EllysXors - Topcoder SRM 543 Div1'
+prob_link: 'https://community.topcoder.com/stat?c=problem_statement&pm=11910'
+gist: 1340e5f371d9210614e98f9a981497bb
+tags: [math]
+---
+XOR의 성질 중 하나는 X ^ X = 0 이다.
+이를 이용하면
+L ^ (L+1) ^ ... (R-1) ^ R
+= 1 ^ 2 ^ ... ^ (R-1) ^ R ^ 1 ^ 2 ^ ... ^ (L-2) ^ (L-1)
+이 된다.
+이제 아래의 함수를 계산할 수만 있으면 된다.
+f(n) = 1부터 n까지의 자연수를 XOR한 값
+그럼 답은 f(R) ^ f(L-1) 이다.
+
+f(n) 의 값을 1부터 죽 적어나가다 보면 규칙을 발견할 수 있는데
+n % 4 == 3 인 n에 대해 f(n) = 0 이다.
+즉, 1부터 4k+3까지의 자연수를 XOR한 값은 무조건 0이라는 뜻이다.
+따라서 n이하이면서 제일 큰 4k+3 꼴인 자연수를 찾고
+그것보다 큰 자연수들을 직접 XOR을 해서 f(n) 값을 계산하면 된다. (최대 4개)
+
+또 다른 풀이로
+f(n) 자체에 규칙이 있다는 것을 발견할 수 있다.
+n = 4k    -> f(n) = n
+n = 4k+1  -> f(n) = 1
+n = 4k+2  -> f(n) = n+1
+n = 4k+3  -> f(n) = 0
+
+f(n) 이 왜 이런 규칙을 갖는지는 이진법 표현을 생각하면 쉽게 알 수 있다.
