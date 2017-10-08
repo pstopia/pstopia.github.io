@@ -1,0 +1,20 @@
+---
+layout: solution
+round_name: 'Codeforces Round #104 (Div. 1)'
+prob_name: '[C] Lucky Subsequence'
+title: '[C] Lucky Subsequence - Codeforces Round #104 (Div. 1)'
+prob_link: 'http://codeforces.com/contest/145/problem/C'
+gist: b059e95dd938655e14d6888dc4173d3e
+tags: [dp, combinatorics]
+---
+1이상 10^9이하인 수 중에 lucky number 가 몇개인지를 세어보면 1022개 밖에 안된다.
+이것을 이용해 DP를 생각할 수 있다.
+먼저 lucky number 들만 모아서 좌표압축을 해두자.
+
+cnt[i] = i번째 lucky number 가 입력에 등장하는 횟수
+D[i][j] = 첫번째~i번째 lucky number 들 중에 j개를 고르는 경우의 수
+          D[i-1][j] + D[i-1][j-1] * cnt[i]
+
+이 DP 테이블을 계산하고 나면
+unlucky number 에서 a개, lucky number 에서 k-a개 고르는 경우를 합쳐서
+답을 구하면 된다.
