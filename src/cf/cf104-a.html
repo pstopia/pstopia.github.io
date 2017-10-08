@@ -1,0 +1,14 @@
+---
+layout: solution
+round_name: 'Codeforces Round #104 (Div. 1)'
+prob_name: '[A] Lucky Conversion'
+title: '[A] Lucky Conversion - Codeforces Round #104 (Div. 1)'
+prob_link: 'http://codeforces.com/contest/145/problem/A'
+gist: 50047c37a54edcb60d4a0ca8d28a8932
+tags: [implementation]
+---
+c47 =  str1[i] == '4' && str2[i] == '7' 인 i의 개수
+c74 =  str1[i] == '7' && str2[i] == '4' 인 i의 개수
+라고 하면, 답은 max(c47, c74) 이다.
+min(c47, c74) 번 만큼은 swap 연산을 해야하고
+swap 이 다 이루어진 후에는 max(c47, c74) - min(c47, c74) 번 만큼 edit 연산을 하면 되기 때문이다.

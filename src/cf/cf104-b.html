@@ -1,0 +1,24 @@
+---
+layout: solution
+round_name: 'Codeforces Round #104 (Div. 1)'
+prob_name: '[B] Lucky Number 2'
+title: '[B] Lucky Number 2 - Codeforces Round #104 (Div. 1)'
+prob_link: 'http://codeforces.com/contest/145/problem/B'
+gist: f002e81d9c144fc0c3d5ab3eac547e7d
+tags: [implementation]
+---
+먼저 결과 문자열 s를 다 만들었다고 해보자.
+s에서 4나 7이 반복되는 구간을 다 줄여버리고 나면
+문자열은 474747... 혹은 747474... 같은 형태가 될 것이다.
+여기서 알 수 있는 사실은 |a3 - a4| <= 1 이어야 한다는 것이다.
+
+1) a3 == a4 인 경우
+  4747...474 이거나 7474...747 같은 형태가 될 것이다.
+2) a3 + 1 == a4 인 경우
+  7474...74 같은 형태가 될 것이다.
+3) a3 == a4 + 1 인 경우
+  4747...47 같은 형태가 될 것이다.
+
+위 경우를 따져서 뼈대 문자열을 먼저 만들고,
+4가 제일 처음 등장하는 위치에 나머지 4들을 끼워넣고
+7이 제일 마지막으로 등장하는 위치에 나머지 7들을 끼워넣으면 된다.
